@@ -1,0 +1,23 @@
+//
+//  pchFile.pch
+//  PANDA-BANG
+//
+//  Created by mhand on 15/2/12.
+//  Copyright (c) 2015年 mhand. All rights reserved.
+//
+
+#ifndef PANDA_BANG_pchFile_pch
+#define PANDA_BANG_pchFile_pch
+#define IsIOS7 ([[[UIDevice currentDevice] systemVersion] floatValue] >=7.0 ? YES : NO)
+#define COLOR(R, G, B, A) [UIColor colorWithRed:R/255.0 green:G/255.0 blue:B/255.0 alpha:A]
+
+#define K_GETFROM_STORYBOARD(SBNAME,VCNAME)  [[UIStoryboard storyboardWithName:SBNAME bundle:[NSBundle mainBundle]]     instantiateViewControllerWithIdentifier:VCNAME]
+
+
+#define KSCREEM_HEIGHT     [UIScreen mainScreen].bounds.size.height
+#define KSCREEM_WIDTH      [UIScreen mainScreen].bounds.size.width
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#endif
