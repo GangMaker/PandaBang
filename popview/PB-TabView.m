@@ -27,8 +27,8 @@
 - (void)drawRect:(CGRect)rect {
     // Drawing code
 
-    NSArray *imageCommon=@[[UIImage imageNamed:@"home_highlight@2x"],[UIImage imageNamed:@"sos.png"] ,[UIImage imageNamed:@"account_normal@2x"]];
-    NSArray *imageHighlight=@[[UIImage imageNamed:@"home_normal@2x"],[UIImage imageNamed:@"sos.png"] ,[UIImage imageNamed:@"account_highlight@2x"]];
+    NSArray *imageCommon=@[[UIImage imageNamed:@"home_highlight@2x"],[UIImage imageNamed:@"pan.png"] ,[UIImage imageNamed:@"account_normal@2x"]];
+    NSArray *imageHighlight=@[[UIImage imageNamed:@"home_normal@2x"],[UIImage imageNamed:@"pan.png"] ,[UIImage imageNamed:@"account_highlight@2x"]];
     UIImageView *backGroundIV=[[UIImageView alloc]initWithFrame:CGRectMake(0, -5, KSCREEM_WIDTH, 55)];
     backGroundIV.image=  [UIImage imageNamed:@"item_detail_bottom_bar@2x"];
     backGroundIV.userInteractionEnabled=YES;
@@ -37,8 +37,8 @@
         float buttonX;
         
         if (index==1) {
-            width=KSCREEM_WIDTH-220;
-            buttonX=110;
+            width=60;
+            buttonX=375/2-30;
         }
         else{
             if (index==0) {
@@ -50,7 +50,7 @@
             width=110;
         }
         //添加3个button
-        UIButton *button=[[UIButton alloc]initWithFrame:CGRectMake(buttonX,0, width, 50)];
+        UIButton *button=[[UIButton alloc]initWithFrame:CGRectMake(buttonX,-10, width, 60)];
         [UIButton buttonWithType:UIButtonTypeRoundedRect];
         
   
