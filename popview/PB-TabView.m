@@ -27,18 +27,20 @@
 - (void)drawRect:(CGRect)rect {
     // Drawing code
 
-    NSArray *imageCommon=@[[UIImage imageNamed:@"home_highlight@2x"],[UIImage imageNamed:@"pan.png"] ,[UIImage imageNamed:@"account_normal@2x"]];
-    NSArray *imageHighlight=@[[UIImage imageNamed:@"home_normal@2x"],[UIImage imageNamed:@"pan.png"] ,[UIImage imageNamed:@"account_highlight@2x"]];
+    NSArray *imageCommon=@[[UIImage imageNamed:@"home_h"],[UIImage imageNamed:@"pan"] ,[UIImage imageNamed:@"account_normal@2x"]];
+    NSArray *imageHighlight=@[[UIImage imageNamed:@"home_normal@2x"],[UIImage imageNamed:@"pan"] ,[UIImage imageNamed:@"account_h"]];
     UIImageView *backGroundIV=[[UIImageView alloc]initWithFrame:CGRectMake(0, -5, KSCREEM_WIDTH, 55)];
     backGroundIV.image=  [UIImage imageNamed:@"item_detail_bottom_bar@2x"];
     backGroundIV.userInteractionEnabled=YES;
     for (int index=0; index<3; index++) {
         float width;
         float buttonX;
+        float heightY;
         
         if (index==1) {
             width=60;
             buttonX=375/2-30;
+            heightY=-10;
         }
         else{
             if (index==0) {
@@ -48,10 +50,12 @@
                 buttonX=KSCREEM_WIDTH-110;;
             }
             width=110;
+            heightY=0;
         }
         //添加3个button
-        UIButton *button=[[UIButton alloc]initWithFrame:CGRectMake(buttonX,-10, width, 60)];
+        UIButton *button=[[UIButton alloc]initWithFrame:CGRectMake(buttonX,heightY, width, 50)];
         [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        
         
   
         //给定tag 切换视图的时候用

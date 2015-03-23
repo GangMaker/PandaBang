@@ -103,6 +103,10 @@
 		17CAF1C11ABE99C300BDD8F9 /* PB-ThirdGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CAF15D1ABE99C300BDD8F9 /* PB-ThirdGroupViewController.m */; };
 		17CAF1C21ABE99C300BDD8F9 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CAF1601ABE99C300BDD8F9 /* MBProgressHUD.m */; };
 		17CAF1C31ABE99C300BDD8F9 /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CAF1631ABE99C300BDD8F9 /* NSString+URLEncoding.m */; };
+		17CAF1C61ABE9B7300BDD8F9 /* account_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 17CAF1C41ABE9B7300BDD8F9 /* account_h.png */; };
+		17CAF1C71ABE9B7300BDD8F9 /* home_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 17CAF1C51ABE9B7300BDD8F9 /* home_h.png */; };
+		17D771801ABF8EB800AEF031 /* placeholder240x240@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D7717F1ABF8EB800AEF031 /* placeholder240x240@2x.png */; };
+		17D771821ABF8F0E00AEF031 /* pan.png in Resources */ = {isa = PBXBuildFile; fileRef = 17D771811ABF8F0E00AEF031 /* pan.png */; };
 		CC1EB8C11A808DA6005DFB7B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC1EB8C01A808DA6005DFB7B /* CoreLocation.framework */; };
 		CC3BB9F91A6E157700D75B44 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3BB9F81A6E157700D75B44 /* main.m */; };
 		CC3BB9FC1A6E157700D75B44 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC3BB9FB1A6E157700D75B44 /* AppDelegate.m */; };
@@ -288,6 +292,10 @@
 		17CAF1601ABE99C300BDD8F9 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		17CAF1621ABE99C300BDD8F9 /* NSString+URLEncoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncoding.h"; sourceTree = "<group>"; };
 		17CAF1631ABE99C300BDD8F9 /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncoding.m"; sourceTree = "<group>"; };
+		17CAF1C41ABE9B7300BDD8F9 /* account_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = account_h.png; sourceTree = "<group>"; };
+		17CAF1C51ABE9B7300BDD8F9 /* home_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_h.png; sourceTree = "<group>"; };
+		17D7717F1ABF8EB800AEF031 /* placeholder240x240@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder240x240@2x.png"; sourceTree = "<group>"; };
+		17D771811ABF8F0E00AEF031 /* pan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pan.png; sourceTree = "<group>"; };
 		CC1EB8C01A808DA6005DFB7B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CC3BB9F31A6E157700D75B44 /* PANDA-BANG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PANDA-BANG.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC3BB9F71A6E157700D75B44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -426,10 +434,14 @@
 				17CAF0EB1ABE99C300BDD8F9 /* 110.png */,
 				17CAF0EC1ABE99C300BDD8F9 /* 12.png */,
 				17CAF0ED1ABE99C300BDD8F9 /* 120.png */,
+				17CAF1C41ABE9B7300BDD8F9 /* account_h.png */,
+				17CAF1C51ABE9B7300BDD8F9 /* home_h.png */,
 				17CAF0EE1ABE99C300BDD8F9 /* 13.png */,
+				17D7717F1ABF8EB800AEF031 /* placeholder240x240@2x.png */,
 				17CAF0EF1ABE99C300BDD8F9 /* 130.png */,
 				17CAF0F01ABE99C300BDD8F9 /* 14.png */,
 				17CAF0F11ABE99C300BDD8F9 /* 140.png */,
+				17D771811ABF8F0E00AEF031 /* pan.png */,
 				17CAF0F21ABE99C300BDD8F9 /* 15.png */,
 				17CAF0F31ABE99C300BDD8F9 /* 150.png */,
 				17CAF0F41ABE99C300BDD8F9 /* 2.jpg */,
@@ -775,6 +787,7 @@
 				17CAF19E1ABE99C300BDD8F9 /* MJRefresh.bundle in Resources */,
 				17CAF19B1ABE99C300BDD8F9 /* steppost_camera_icon2@2x.png in Resources */,
 				17CAF17E1ABE99C300BDD8F9 /* 130.png in Resources */,
+				17CAF1C61ABE9B7300BDD8F9 /* account_h.png in Resources */,
 				17CAF1981ABE99C300BDD8F9 /* sos.png in Resources */,
 				17CAF1851ABE99C300BDD8F9 /* 37x-Checkmark.png in Resources */,
 				17CAF17A1ABE99C300BDD8F9 /* 110.png in Resources */,
@@ -802,12 +815,15 @@
 				17CAF17C1ABE99C300BDD8F9 /* 120.png in Resources */,
 				17CAF18B1ABE99C300BDD8F9 /* btn_share@2x.png in Resources */,
 				17CAF1991ABE99C300BDD8F9 /* star_icon2@2x.png in Resources */,
+				17CAF1C71ABE9B7300BDD8F9 /* home_h.png in Resources */,
 				17CAF1831ABE99C300BDD8F9 /* 2.jpg in Resources */,
 				17CAF18F1ABE99C300BDD8F9 /* head.jpg in Resources */,
 				17CAF1971ABE99C300BDD8F9 /* shanghai.jpg in Resources */,
 				17CAF1921ABE99C300BDD8F9 /* icon_message_logo_system@2x.png in Resources */,
 				17CAF19C1ABE99C300BDD8F9 /* steppost_camera_icon@2x.png in Resources */,
+				17D771801ABF8EB800AEF031 /* placeholder240x240@2x.png in Resources */,
 				CC3BBA071A6E157700D75B44 /* LaunchScreen.xib in Resources */,
+				17D771821ABF8F0E00AEF031 /* pan.png in Resources */,
 				CC3BBA041A6E157700D75B44 /* Images.xcassets in Resources */,
 				17CAF18D1ABE99C300BDD8F9 /* cancel.png in Resources */,
 				17CAF18C1ABE99C300BDD8F9 /* call.png in Resources */,
