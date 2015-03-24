@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
-@interface PB_SOSPOPSecondViewController : UIViewController<UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,MBProgressHUDDelegate>
+@interface PB_SOSPOPSecondViewController : UIViewController<UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,MBProgressHUDDelegate,UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *imageBackView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
-@property (assign, nonatomic)int error;
+
 
 - (IBAction)publishS:(UIBarButtonItem *)sender;
 

@@ -59,13 +59,38 @@
 
 
 - (IBAction)publishS:(UIBarButtonItem *)sender {
+    [self.textView resignFirstResponder];
+    NSString *error=@"";
+    if ([self.textView.text isEqualToString:@""]) {
+        error=@"写点什么吧";
+    }
+    if ([error isEqualToString:@""]) {
+       
+        UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"求助不是儿戏" message:@"确认求助？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        alertView.tag=666;
+        
+        [alertView show];
+
+    }
+    else{
+        UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"注意" message:error delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alertView show];
+
     
-    UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"注意" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    }
     
-    [alertView show];
     
 }
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView.tag==666) {
+        if (buttonIndex==1) {
+            [self showWithLabelMixed];
+           
+        }
+        
+    }
 
+}
 -(IBAction)recoverKeyboard:(UIControl *)sender {
      [self.textView resignFirstResponder];
 }
@@ -656,6 +681,11 @@
     HUD.mode = MBProgressHUDModeCustomView;
     HUD.labelText = @"提交成功";
     sleep(2);
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+    
    }
 
 

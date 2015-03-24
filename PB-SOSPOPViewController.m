@@ -8,6 +8,8 @@
 
 #import "PB-SOSPOPViewController.h"
 #import "PB-SOSPOPSecondViewController.h"
+#import "NSString+Valid.h"
+
 @interface PB_SOSPOPViewController ()
 
 @end
@@ -77,23 +79,43 @@
 
 }
 - (IBAction)nextStepAction:(UIButton *)sender {
+    NSMutableString *errors=[NSMutableString string];
     [self recoverKeyBoard];
+    if ([self.textName.text isEqualToString:@""]) {
+        [errors appendFormat:@"%@\n",@" 姓名没有填写"];
+        
+    }
+    else if (![self.textName.text isChinese]){
+        [errors appendFormat:@"%@\n",@" 填写中文姓名"];
+
+    }
+    else if ([self.textTelephone.text isEqualToString:@""]||[self.textTelephoneS.text isEqualToString:@""]){
+        
+        [errors appendFormat:@"%@\n",@"电话没有填写"];
+        
+    }
+
+    else if ([self.textTelephone.text length]!=11||[self.textTelephoneS.text length]!=11){
     
-    [self performSegueWithIdentifier:@"nextStep" sender:nil];
+       [errors appendFormat:@"%@\n",@"电话位数不对"];
     
+    }
+   
+    if ([errors isEqualToString:@""]) {
+        [self performSegueWithIdentifier:@"nextStep" sender:nil];
+        
+
+    }
+    else
+    {
+    UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"注意" message:errors delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     
-}
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if (self.textName) {
-        <#statements#>
+        [alertView show];
+    
     }
     
-    
-    PB_SOSPOPSecondViewController *secondVC=(PB_SOSPOPSecondViewController *) segue.destinationViewController;
-    
-
-
 }
+
 /*
 #pragma mark - Navigation
 
