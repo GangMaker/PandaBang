@@ -23,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    主视图左移 出现的vc 用来显示一些退出按钮 团队介绍类似的功能
        userDB=[[UserDB alloc]init];
 
     // Do any additional setup after loading the view.

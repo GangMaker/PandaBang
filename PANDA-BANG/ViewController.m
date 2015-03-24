@@ -63,7 +63,9 @@
     //    [testObject save];
 
     [super viewDidLoad];
-       //   设置状态栏的颜色
+    
+
+          //   设置状态栏的颜色
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];
 //  popviewclose默认的是关闭
     self.popViewCloseAnimation=NO;
@@ -194,7 +196,7 @@
             }
                             }
         
-        PB_BlackSViewController *blacksVC=(PB_BlackSViewController *) [self.MainViewController.viewControllers objectAtIndex:2];
+        PB_BlackSViewController *blacksVC=(PB_BlackSViewController *) [self.MainViewController.viewControllers objectAtIndex:1];
         if ([blacksVC.childViewControllers count]==2) {
             
             

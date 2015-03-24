@@ -25,10 +25,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+//    
     imageCollection=[NSMutableArray arrayWithCapacity:3];
+//    设置文字框的边框
     self.textView.layer.borderColor=[UIColor blackColor].CGColor;
     self.textView.layer.borderWidth=1.0f;
+//    设置添加照片的按钮
     UIButton *addImageButton=[[UIButton alloc]initWithFrame:CGRectMake(20, 20, 90, 90)];
     addImageButton.tag=304;
     addImageButton.backgroundColor=[UIColor groupTableViewBackgroundColor];
@@ -61,17 +63,20 @@
 - (IBAction)publishS:(UIBarButtonItem *)sender {
     [self.textView resignFirstResponder];
     NSString *error=@"";
+//    判断文字框是否有内容
     if ([self.textView.text isEqualToString:@""]) {
         error=@"写点什么吧";
     }
+//    没有内容 警告
     if ([error isEqualToString:@""]) {
        
         UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"求助不是儿戏" message:@"确认求助？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         alertView.tag=666;
-        
+       
         [alertView show];
 
     }
+//    有 弹出提示框
     else{
         UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"注意" message:error delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [alertView show];
@@ -84,6 +89,7 @@
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (alertView.tag==666) {
         if (buttonIndex==1) {
+//            确定提交 有个风火轮效果后 提交
             [self showWithLabelMixed];
            
         }
@@ -91,9 +97,11 @@
     }
 
 }
+//回收键盘
 -(IBAction)recoverKeyboard:(UIControl *)sender {
      [self.textView resignFirstResponder];
 }
+//添加图片选择
 - (void)addImage:(UIButton *)sender {
     UIActionSheet *choosePhotoType=[[UIActionSheet alloc]initWithTitle:@"获取情况照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拍照" otherButtonTitles:@"照片库", nil];
  [choosePhotoType showInView:self.view];
@@ -150,6 +158,7 @@
     }];
     
 }
+//在拍照完成后添加图片  根据图片数量判断是否还需添加图片框 并且给予相应的动画
 -(void)addImageV:(UIImage *)image{
     
     float imageCount=[imageCollection count];
@@ -182,7 +191,7 @@
     
 }
 
-
+//长按键的效果  点击相应时间开始触发动画
 -(void)longAction:(UILongPressGestureRecognizer *)longG{
     CGPoint firstImageP=CGPointMake(65, 65);
     CGPoint  secondImageP=CGPointMake(165, 65);
@@ -191,15 +200,15 @@
     UIImageView *imageT=(UIImageView *)[self.imageBackView viewWithTag:303];
     
     UIImageView *imageF=(UIImageView *)[self.imageBackView viewWithTag:301];
-    
-    
+//    还没开始移动
     if (allowMove==NO) {
+//  弹出回收按钮
         UIImageView *wasteBasket=[[UIImageView alloc]initWithFrame:CGRectMake(-66, 45, 66, 40)];
         
         wasteBasket.backgroundColor=[UIColor redColor];
         wasteBasket.tag=300;
         [self.imageBackView addSubview:wasteBasket];
-        
+//  同时 图片变大可以进行移动
         [UIView animateWithDuration:0.3 animations:^{
             [longG.view setBounds:CGRectMake(longG.view.bounds.origin.x, longG.view.bounds.origin.y, longG.view.bounds.size.width*1.2, longG.view.bounds.size.height*1.2)];
             [self.imageBackView bringSubviewToFront:longG.view];
@@ -215,6 +224,7 @@
             
         }];
     }
+//    当图片开始移动
     else if(allowMove){
         
         float imageCount=[imageCollection count];
@@ -222,9 +232,9 @@
         lastPoint=[longG locationInView:self.imageBackView];
         longG.view.center=CGPointMake(lastPoint.x-recordMove.x, lastPoint.y-recordMove.y);
         UIImageView *wasteBasket=(UIImageView *)[self.imageBackView viewWithTag:300];
-        
+//        如果移动的事第一个图片
         if (longG.view.tag==301) {
-            
+//            判断其位置 给出相应的动画 如果在大于250的位置 图片二三都需向左移动
             if (lastPoint.x>150&&lastPoint.x<250) {
                 if(imageCount!=1) {
                     [UIView animateWithDuration:0.2 animations:^{
@@ -284,6 +294,7 @@
             
             
         }
+//        同理 移动图片二也是同样的效果
         else if (longG.view.tag==302){
             
             if (lastPoint.x>250) {
@@ -364,7 +375,7 @@
             }
             
         }
-        
+//       但当试图进入这个范围 也就是回收按钮的位置 回收按钮变大 图片变透明 如果在这个位置放手 图片则被删除
         if (lastPoint.x<66&&lastPoint.x>0) {
             if (lastPoint.y<85&&lastPoint.y>45) {
                 longG.view.alpha=0.7;
@@ -387,8 +398,9 @@
             }
         }
     }
-    
+//    当手势结束的时候调用
     if (longG.state==UIGestureRecognizerStateEnded) {
+//        在回收按钮的范围 触发删除图片的动画 否则只执行改变顺序 和tag的方法
         if (lastPoint.x<66&&lastPoint.x>0) {
             
             [self performSelector:@selector(delayDeleteMove:) withObject:longG.view afterDelay:0.5];
@@ -403,6 +415,7 @@
     
     
 }
+//删除图片的方法
 -(void)delayDeleteMove:(UIImageView *)longV{
     CGPoint firstImageP=CGPointMake(65, 65);
     CGPoint  secondImageP=CGPointMake(165, 65);
@@ -414,7 +427,7 @@
     UIImageView *imageF=(UIImageView *)[self.imageBackView  viewWithTag:301];
     
     float imageCount=[imageCollection count];
-    
+//    当触发的事第一个图片 然后根据可能存在的图片数 给出相应的动画  然后remove自己
     if (longV.tag==301) {
         if (imageCount==1) {
             
@@ -487,6 +500,7 @@
         
         
     }
+//    在删除后 回收按钮同时动画移除
     UIImageView *wasteBasket=(UIImageView *)[self.imageBackView  viewWithTag:300];
     
     [UIView animateWithDuration:0.2 animations:^{
@@ -505,6 +519,7 @@
     
     
 }
+//结束移动的方法
 -(void)delayEndMove:(UIImageView *)longV{
     NSString *firstImagex=[NSString stringWithFormat:@"%f",65.0f ];
     NSString *secondImagex=[NSString stringWithFormat:@"%f",165.0f ];
@@ -517,9 +532,7 @@
     UIImageView *imageF=(UIImageView *)[self.imageBackView  viewWithTag:301];
     float imageCount=[imageCollection count];
     
-    //    CGPoint firstImageP=CGPointMake(65+self.frame.size.width, 175);
-    //    CGPoint  secondImageP=CGPointMake(165+self.frame.size.width, 175);
-    //    CGPoint  thirdImageP=CGPointMake(265+self.frame.size.width, 175);
+//   假设移动的事第一个tag的图片 可以知道其他图片所在的位置 然后根据所在的位置给他们相应这个位置的tag 然后移动的图片到空缺位置的地方
     if (longV.tag==301) {
         
         if (imageCount==3) {
@@ -565,7 +578,7 @@
         
     }
     
-    
+//  与上同理  根据不同的图片数 给予不同的动画
     else if (longV.tag==302){
         if (imageCount==3) {
             NSMutableArray *numberArray=[NSMutableArray arrayWithObjects:firstImagex,secondImagex,thirdImagex, nil];
@@ -644,7 +657,7 @@
     allowMove=NO;
     
 }
-
+//加载这个风火轮的view
 - (void)showWithLabelMixed {
     
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -656,6 +669,7 @@
     
     [HUD showWhileExecuting:@selector(myMixedTask) onTarget:self withObject:nil animated:YES];
 }
+//给定风火轮的样式 以及切换的时间（根据上传的时间而定）结束后上传成功 回收vc
 - (void)myMixedTask {
     // Indeterminate mode
     //    sleep(2);
@@ -681,13 +695,18 @@
     HUD.mode = MBProgressHUDModeCustomView;
     HUD.labelText = @"提交成功";
     sleep(2);
-    
+//    传好回调
     [self dismissViewControllerAnimated:YES completion:^{
         
     }];
     
    }
 
+-(void)chooseLocation{
 
+    [self performSegueWithIdentifier:@"locationVC" sender:nil];
+    
+
+}
 
 @end

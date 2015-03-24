@@ -11,6 +11,7 @@
 @implementation PB_SOSCell
 
 - (void)awakeFromNib {
+//    代理事tabbar 所有cell上按钮的执行都给了代理
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(PBACTIONPush:)];
     [tap setNumberOfTouchesRequired:1];
     [tap  setNumberOfTapsRequired:1];

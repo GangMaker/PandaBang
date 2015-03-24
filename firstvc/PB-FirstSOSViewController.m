@@ -121,6 +121,7 @@
     
     
 }
+//头像推送到个人介绍的画面
 -(void)pushToInfo{
     self.myinfoVC=K_GETFROM_STORYBOARD(@"Main", @"infoVC");
     [self.myinfoVC.view setFrame:CGRectMake(375, 0, 375, KSCREEM_HEIGHT)];
@@ -199,7 +200,7 @@
     }
 
 }
-
+//推送到消息的vc
 - (IBAction)pushMessageVC:(UIButton *)sender {
     self.mymessageVC=K_GETFROM_STORYBOARD(@"Main", @"navMessageVC");
     

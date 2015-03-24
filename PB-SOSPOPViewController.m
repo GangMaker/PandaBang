@@ -28,12 +28,13 @@
     // Do any additional setup after loading the view.
 }
 -(void)viewWillAppear:(BOOL)animated{
+//    每次将要出现  添加键盘hide通知
     [super viewWillAppear:animated];
     [self keyboardAddNSNotification];
 
 
 }
-
+//回收键盘的方法
 -(void)recoverKeyBoard{
 
     [self.textName resignFirstResponder];
@@ -43,7 +44,7 @@
 
 }
 -(void)keyboardAddNSNotification{
-    //增加监听，当键盘出现或改变时收出消息
+    //增加监听
        [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
@@ -51,7 +52,7 @@
     
 }
 -(void)keyboardWillHide:(NSNotification *)aNotification{
-
+//当键盘回收 滚动视图下移
     [self.scrollView setContentOffset:CGPointMake(0,-64) animated:YES];
 
 }
@@ -61,9 +62,12 @@
     // Dispose of any resources that can be recreated.
 }
 -(void)initAllControl{
+//    初始化一些控件
+    
     [self setButton:self.sexButton];
     [self setButton:self.headButton];
     [self setButton:self.bloodButton];
+//    给滚动视图添加方法 来回收键盘
     UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(recoverKeyBoard)];
     [tap setNumberOfTapsRequired:1];
     [tap setNumberOfTapsRequired:1];
@@ -73,14 +77,16 @@
 }
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
-    
+// 当文字开始编辑 设置文字框上移
   [self.scrollView setContentOffset:CGPointMake(0, 250) animated:YES];
     return YES;
 
 }
 - (IBAction)nextStepAction:(UIButton *)sender {
+//    点击下一步操作
     NSMutableString *errors=[NSMutableString string];
     [self recoverKeyBoard];
+//    判断是否有以下错误 并且加到字符串上
     if ([self.textName.text isEqualToString:@""]) {
         [errors appendFormat:@"%@\n",@" 姓名没有填写"];
         
@@ -100,12 +106,13 @@
        [errors appendFormat:@"%@\n",@"电话位数不对"];
     
     }
-   
+// 如果没有error 推送下一页面
     if ([errors isEqualToString:@""]) {
         [self performSegueWithIdentifier:@"nextStep" sender:nil];
         
 
     }
+//    否则弹出警告
     else
     {
     UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"注意" message:errors delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
@@ -130,13 +137,14 @@
     sender.layer.cornerRadius=20;
     sender.layer.masksToBounds=YES;
     }
-
+//选择头像按钮
 - (IBAction)chooseHead:(UIButton *)sender {
     UIActionSheet *chooseHead=[[UIActionSheet alloc]initWithTitle:@"头像照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拍照" otherButtonTitles:@"照片库", nil];
     chooseHead.tag=33;
     [chooseHead showInView:self.view];
 
 }
+//添加头像图片按钮
 -(void)addImage:(UIButton *)sender{
     
     UIActionSheet *choosePhotoType=[[UIActionSheet alloc]initWithTitle:@"获取情况照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拍照" otherButtonTitles:@"照片库", nil];
@@ -144,9 +152,9 @@
     
 }
 
-
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
         if (buttonIndex==0) {
+//        拍照
             [self  takePhotopicker];
         }
         else if (buttonIndex==1){
@@ -154,7 +162,7 @@
             
         }
    }
-
+//选择性别按钮
 - (IBAction)chooseSex:(UIButton *)sender {
     if ([sender.titleLabel.text isEqualToString:@"男"]) {
         [sender setTitle:@"女" forState:UIControlStateNormal];
@@ -165,7 +173,7 @@
     }
 
 }
-
+//选择血型按钮
 - (IBAction)chooseBlood:(UIButton *)sender {
     
     if ([sender.titleLabel.text isEqualToString:@"A"]) {
@@ -185,7 +193,7 @@
     }
 
 }
-
+//返回vc
 - (IBAction)backVC:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:^{
         
@@ -193,12 +201,12 @@
     
     
 }
-
+//选择年龄
 - (IBAction)ageChange:(UISlider *)sender {
     self.age.text=[NSString stringWithFormat:@"%.0f岁",sender.value*100];
    
 }
-
+//血量选择
 - (IBAction)volumeChange:(UISlider *)sender {
     NSString *volumeN=[NSString stringWithFormat:@"%.0f",sender.value*100];
     int volumeNN=[volumeN floatValue];
@@ -206,7 +214,7 @@
 
 }
 
-
+//创建pickerv
 -(void)createMyPickerController:(UIImagePickerControllerSourceType )sourceType{
         if (myPickerController==nil) {
             
@@ -239,6 +247,7 @@
     [self presentViewController:myPickerController animated:YES completion:^{ }];
     
 }
+//完成选取后
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
         UIImage *image= [info objectForKey:UIImagePickerControllerOriginalImage];
         [self getHead:image];
@@ -248,6 +257,7 @@
     }];
     
 }
+//加入照片
 -(void)getHead:(UIImage *)image{
 //    防止图片渲染成蓝色
     image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -255,12 +265,14 @@
     [self.headButton setImage:image forState:UIControlStateNormal];
     
 }
+//取消拍摄 回收
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     [picker dismissViewControllerAnimated:YES completion:^{
         
     }];
     
 }
+//离开页面前删除通知
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
      [[NSNotificationCenter defaultCenter] removeObserver:self];

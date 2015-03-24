@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    没有登录弹出的navvc
     // Do any additional setup after loading the view.
 }
 

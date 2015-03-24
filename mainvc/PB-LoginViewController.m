@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    这个是登入页面的vc
     // Do any additional setup after loading the view.
 }
 

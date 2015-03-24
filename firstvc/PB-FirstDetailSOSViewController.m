@@ -33,6 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    添加左移动的效果
     self.panG=[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panAction:)];
     self.panG.delegate=self;
   [self.view addGestureRecognizer:self.panG];
@@ -40,9 +41,8 @@
         NSIndexPath *indexPath=[NSIndexPath indexPathForRow:14 inSection:0];
        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     }
+//    从数据库请求数据下来
     [self getDataFromServer];
-//    键盘添加通知
-   [self keyboardAddNSNotification];
 //    添加image到scroll上
     [self addImageToScrollV];
 //    设置评论框的边框
@@ -53,9 +53,17 @@
    
     // Do any additional setup after loading the view.
 }
+//
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //    键盘添加通知
+    [self keyboardAddNSNotification];
+
+    [self keyboardAddNSNotification];
+}
 
 -(void)viewDidDisappear:(BOOL)animated{
-
+//移除本通知
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
@@ -93,6 +101,7 @@
     
    
 }
+//添加监听输入文字的时候
 -(void)textChangeAddNotification{
 //    添加监听 当视图内容改变时 来改变高度
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(textViewDidChange:) name:UITextViewTextDidChangeNotification object:nil];
@@ -368,11 +377,13 @@
 
     
 }
-
+//移动vc的效果
 -(void)panAction:(UIPanGestureRecognizer *)pan{
+//    找到上一个视图 和最底层的vc 当这个pan触发的时候我们需要关闭底层的pan 避免冲突
     ViewController *vc= (ViewController *)self.tabBarController.parentViewController;
 
     self.sosVC=(PB_FirstSOSViewController *)[self.parentViewController.childViewControllers objectAtIndex:0];
+    
     switch (pan.state) {
         case UIGestureRecognizerStateBegan:
             self.startPoint=[pan translationInView:self.view];

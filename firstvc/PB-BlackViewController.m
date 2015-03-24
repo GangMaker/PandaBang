@@ -18,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//  本视图是黑色  添加firstvc 为了firstvc和firstdetailvc在切换的时候 firstvc有在黑色视图里后退的效果
     PB_FirstSOSViewController *sosVC= (PB_FirstSOSViewController *)K_GETFROM_STORYBOARD(@"Main", @"firstSOS");
     self.firstSOSVC=sosVC;
     [self.view addSubview:self.firstSOSVC.view];

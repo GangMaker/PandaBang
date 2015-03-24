@@ -24,6 +24,7 @@
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
+//    这个是首页左上角的范围选择框 是否附近或全国  刷新tableview
     if (self.tableV==nil) {
         
         self.imageV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];

@@ -27,8 +27,8 @@
 - (void)drawRect:(CGRect)rect {
     // Drawing code
 
-    NSArray *imageCommon=@[[UIImage imageNamed:@"home_h"],[UIImage imageNamed:@"pan"] ,[UIImage imageNamed:@"account_normal@2x"]];
-    NSArray *imageHighlight=@[[UIImage imageNamed:@"home_normal@2x"],[UIImage imageNamed:@"pan"] ,[UIImage imageNamed:@"account_h"]];
+//  最底下的tabview 切换tabbarvc的 需要在第一个子vc和第三个子vc 同时添加  添加在tabvc上会造成当推送到其他页面时候tabview不隐藏的问题
+    
     UIImageView *backGroundIV=[[UIImageView alloc]initWithFrame:CGRectMake(0, -5, KSCREEM_WIDTH, 55)];
     backGroundIV.image=  [UIImage imageNamed:@"item_detail_bottom_bar@2x"];
     backGroundIV.userInteractionEnabled=YES;

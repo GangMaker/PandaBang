@@ -8,15 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "PB-SOSpopView.h"
 
 @class ViewController;
 
 
-@interface PB_TabBarMenuViewController : UITabBarController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,CLLocationManagerDelegate,UITextViewDelegate,PBSOSDelegate,MBProgressHUDDelegate>
+@interface PB_TabBarMenuViewController : UITabBarController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,CLLocationManagerDelegate,UITextViewDelegate>
 @property(nonatomic,retain)UIImageView *tabView;
 @property(nonatomic,retain)ViewController *parentVC;
-@property(nonatomic,retain)PB_SOSpopView *mySosView;
 @property(nonatomic,retain)NSMutableArray *currentLocation;
 -(void)changeTabView:(UIButton *)sender;
 

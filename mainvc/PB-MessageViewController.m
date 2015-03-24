@@ -22,8 +22,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    消息页面的vc 有群消息 个人消息和系统消息
+//  cellcount 根据服务器请求的所有结果
     cellCount=10;
-    
+//    在本视图上添加移动动画效果
     self.panG=[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panAction:)];
     [self.view addGestureRecognizer:self.panG];
 
@@ -69,6 +71,7 @@
 
 }
 -(void)panAction:(UIPanGestureRecognizer *)pan{
+//    参照firstdetail里的panaction一样
     ViewController *vc= (ViewController *)self.tabBarController.parentViewController;
     
     self.sosVC=(PB_FirstSOSViewController *)[self.navigationController.parentViewController.childViewControllers objectAtIndex:0];
@@ -184,6 +187,7 @@
 
 
 - (IBAction)backVC:(UIBarButtonItem *)sender {
+//    回收vc的动画
     self.sosVC=(PB_FirstSOSViewController *)[self.navigationController.parentViewController.childViewControllers objectAtIndex:0];
     
     [UIView animateWithDuration:0.3 animations:^{

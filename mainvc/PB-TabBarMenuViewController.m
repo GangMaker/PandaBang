@@ -34,7 +34,7 @@ UIImagePickerController *myPickerController;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
+//  首页的tabbarvc
     userDB=[[UserDB alloc]init];
     [userDB creatTable];
     UserModal *modal=[[UserModal alloc]init];
@@ -60,12 +60,14 @@ UIImagePickerController *myPickerController;
 
 //切换页面的时候调用
 -(void)changeTabView:(UIButton *)sender{
-    NSLog(@"1111");
+//    如果点击的tag1的button 切换第一个页面
     if (sender.tag==1) {
         
         self.selectedIndex=0;
     
 }
+//    如果点击的tag3的button 切换第二个页面
+
     else if (sender.tag==3) {
         NSLog(@"++++++%d",self.parentVC.isLogin);
 
@@ -87,101 +89,18 @@ UIImagePickerController *myPickerController;
 
     }
     else{
+//        弹出navsosvc
         PB_NAVSOSPViewController *navSOS=K_GETFROM_STORYBOARD(@"Main", @"navSOS");
         [self presentViewController:navSOS animated:YES completion:^{
             
             
             
         }];
-
-//        if (self.mySosView==nil) {
-        
-//中间那个是直接弹出视图 视图里面填写sos相关的信息(弹出sos)
-//        self.mySosView=[[PB_SOSView alloc]initWithFrame:CGRectMake(0,KSCREEM_HEIGHT, KSCREEM_WIDTH, 280)];
-//        self.mySosView.delegate=self;
-//       self.mySosView.backgroundColor=[UIColor whiteColor];
-//        
-//        UIBlurEffect *blur=[UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
-//     UIVisualEffectView *LightCView=[[UIVisualEffectView alloc]initWithEffect:blur];
-////     LightCView.backgroundColor=[UIColor blackColor];
-//        LightCView.frame=CGRectMake(0, 0,KSCREEM_WIDTH, KSCREEM_HEIGHT);
-//        LightCView.alpha=0;
-//        self.mySosView.lightView=LightCView;
-////     [LightCView addTarget:self action:@selector(PopBackView:) forControlEvents:UIControlEventTouchUpInside];
-//     [UIView animateWithDuration:0.3 animations:^{
-//         LightCView.alpha=1;
-//     }];
-//     [self.view addSubview:self.mySosView.lightView];
-//     
-//    [self.view addSubview:self.mySosView];t
-//     [self PopView];
-//    让父控制器的左移效果失灵
-//           lightView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, KSCREEM_WIDTH, KSCREEM_HEIGHT)];
-//            lightView.backgroundColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:0];
-
-//            for (int index=0; index<5; index++) {
-//                UIButton *button=[[UIButton alloc]initWithFrame:CGRectMake(20+75*index, 500, 38, 38)];
-//                [button addTarget:self action:@selector(changeContentButton:) forControlEvents:UIControlEventTouchUpInside];
-//                button.tag=101+index;
-//                button.backgroundColor=[UIColor whiteColor];
-//                [lightView addSubview:button];
-//            }
-            
-//            self.mySosView=[[PB_SOSpopView alloc]initWithFrame:CGRectMake(20, 120, 335, 335)];
-//            [self.mySosView getAllThings];
-//            self.mySosView.backgroundColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:1];
-//            self.mySosView.delegate=self;
-//            UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(PopBackview)];
-//            [tap setNumberOfTapsRequired:1];
-//            [tap setNumberOfTouchesRequired:1];
-//        [lightView addGestureRecognizer:tap];
-//            [self.view addSubview:lightView];
-//            
-//            [self.view addSubview:self.mySosView];
-//
-//                    [self PopView];
+//关闭显示右边vc的动画
         self.parentVC=(ViewController *)self.parentViewController;
         self.parentVC.popViewCloseAnimation=YES;
     }
     }
-    
-//}
-//-(void)changeContentButton:(UIButton *)sender{
-//
-//
-//}
--(void)PopView{
-    
-[UIView animateWithDuration:0.3 animations:^{
-    lightView.backgroundColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
-    
-} completion:^(BOOL finished) {
-    
-}];
-}
--(void)backView{
-    [self PopBackview];
-}
-//收回视图的动画 结束后移除
--(void)PopBackview{
-    [UIView animateWithDuration:0.3 animations:^{
-        self.mySosView.hidden=YES;
-        lightView.backgroundColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:0];
-        
-    } completion:^(BOOL finished) {
-        [lightView removeFromSuperview];
-        lightView=nil;
-        [self.mySosView removeFromSuperview];
-        [[NSNotificationCenter defaultCenter] removeObserver:self.mySosView];
-        [self.mySosView.imageCollection removeAllObjects];
-        self.mySosView=nil;
-        self.parentVC=(ViewController *)self.parentViewController;
-        
-        self.parentVC.popViewCloseAnimation=NO;
-
-        
-    }];
-   }
 
 
 
