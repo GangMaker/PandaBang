@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17B226491AC0D0B50063F6D0 /* PB-SOSPOPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B226481AC0D0B50063F6D0 /* PB-SOSPOPViewController.m */; };
+		17B2264C1AC0D0EB0063F6D0 /* PB-NAVSOSPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B2264B1AC0D0EB0063F6D0 /* PB-NAVSOSPViewController.m */; };
+		17B2264F1AC10E9F0063F6D0 /* PB-SOSPOPSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B2264E1AC10E9F0063F6D0 /* PB-SOSPOPSecondViewController.m */; };
 		17CAF1641ABE99C300BDD8F9 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17CAF0BC1ABE99C300BDD8F9 /* AVOSCloud.framework */; };
 		17CAF1651ABE99C300BDD8F9 /* NSString+Valid.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CAF0BF1ABE99C300BDD8F9 /* NSString+Valid.m */; };
 		17CAF1661ABE99C300BDD8F9 /* PB-SOSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CAF0C21ABE99C300BDD8F9 /* PB-SOSCell.m */; };
@@ -138,6 +141,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17B226471AC0D0B50063F6D0 /* PB-SOSPOPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PB-SOSPOPViewController.h"; path = "../PB-SOSPOPViewController.h"; sourceTree = "<group>"; };
+		17B226481AC0D0B50063F6D0 /* PB-SOSPOPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PB-SOSPOPViewController.m"; path = "../PB-SOSPOPViewController.m"; sourceTree = "<group>"; };
+		17B2264A1AC0D0EB0063F6D0 /* PB-NAVSOSPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PB-NAVSOSPViewController.h"; path = "../PB-NAVSOSPViewController.h"; sourceTree = "<group>"; };
+		17B2264B1AC0D0EB0063F6D0 /* PB-NAVSOSPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PB-NAVSOSPViewController.m"; path = "../PB-NAVSOSPViewController.m"; sourceTree = "<group>"; };
+		17B2264D1AC10E9F0063F6D0 /* PB-SOSPOPSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PB-SOSPOPSecondViewController.h"; path = "../PB-SOSPOPSecondViewController.h"; sourceTree = "<group>"; };
+		17B2264E1AC10E9F0063F6D0 /* PB-SOSPOPSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PB-SOSPOPSecondViewController.m"; path = "../PB-SOSPOPSecondViewController.m"; sourceTree = "<group>"; };
 		17CAF0BC1ABE99C300BDD8F9 /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
 		17CAF0BE1ABE99C300BDD8F9 /* NSString+Valid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Valid.h"; sourceTree = "<group>"; };
 		17CAF0BF1ABE99C300BDD8F9 /* NSString+Valid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Valid.m"; sourceTree = "<group>"; };
@@ -416,6 +425,12 @@
 			children = (
 				17CAF0E01ABE99C300BDD8F9 /* PB-POPupView.h */,
 				17CAF0E11ABE99C300BDD8F9 /* PB-POPupView.m */,
+				17B2264A1AC0D0EB0063F6D0 /* PB-NAVSOSPViewController.h */,
+				17B2264B1AC0D0EB0063F6D0 /* PB-NAVSOSPViewController.m */,
+				17B226471AC0D0B50063F6D0 /* PB-SOSPOPViewController.h */,
+				17B226481AC0D0B50063F6D0 /* PB-SOSPOPViewController.m */,
+				17B2264D1AC10E9F0063F6D0 /* PB-SOSPOPSecondViewController.h */,
+				17B2264E1AC10E9F0063F6D0 /* PB-SOSPOPSecondViewController.m */,
 				17CAF0E21ABE99C300BDD8F9 /* PB-SCREENView.h */,
 				17CAF0E31ABE99C300BDD8F9 /* PB-SCREENView.m */,
 				17CAF0E41ABE99C300BDD8F9 /* PB-SOSpopView.h */,
@@ -860,6 +875,7 @@
 				17CAF1B31ABE99C300BDD8F9 /* UIImage+WebP.m in Sources */,
 				17CAF1AB1ABE99C300BDD8F9 /* SDWebImageDecoder.m in Sources */,
 				17CAF1BE1ABE99C300BDD8F9 /* PB-selfCell.m in Sources */,
+				17B2264C1AC0D0EB0063F6D0 /* PB-NAVSOSPViewController.m in Sources */,
 				17CAF1B21ABE99C300BDD8F9 /* UIImage+MultiFormat.m in Sources */,
 				17CAF1A91ABE99C300BDD8F9 /* SDImageCache.m in Sources */,
 				17CAF16A1ABE99C300BDD8F9 /* PB-FirstDetailSOSViewController.m in Sources */,
@@ -886,6 +902,7 @@
 				17CAF1C21ABE99C300BDD8F9 /* MBProgressHUD.m in Sources */,
 				17CAF1B71ABE99C300BDD8F9 /* BaseDB.m in Sources */,
 				17CAF1BB1ABE99C300BDD8F9 /* PB-grouppCell.m in Sources */,
+				17B2264F1AC10E9F0063F6D0 /* PB-SOSPOPSecondViewController.m in Sources */,
 				17CAF1BC1ABE99C300BDD8F9 /* PB-MessageCell.m in Sources */,
 				17CAF16C1ABE99C300BDD8F9 /* PB-InfoViewController.m in Sources */,
 				17CAF1A71ABE99C300BDD8F9 /* MKAnnotationView+WebCache.m in Sources */,
@@ -899,6 +916,7 @@
 				17CAF1A81ABE99C300BDD8F9 /* NSData+ImageContentType.m in Sources */,
 				17CAF19F1ABE99C300BDD8F9 /* MJRefreshBaseView.m in Sources */,
 				17CAF1A11ABE99C300BDD8F9 /* MJRefreshFooterView.m in Sources */,
+				17B226491AC0D0B50063F6D0 /* PB-SOSPOPViewController.m in Sources */,
 				17CAF1691ABE99C300BDD8F9 /* PB-BlackViewController.m in Sources */,
 				17CAF1BD1ABE99C300BDD8F9 /* PB-saveCell.m in Sources */,
 				17CAF1B01ABE99C300BDD8F9 /* UIButton+WebCache.m in Sources */,

@@ -32,49 +32,35 @@
     UIImageView *backGroundIV=[[UIImageView alloc]initWithFrame:CGRectMake(0, -5, KSCREEM_WIDTH, 55)];
     backGroundIV.image=  [UIImage imageNamed:@"item_detail_bottom_bar@2x"];
     backGroundIV.userInteractionEnabled=YES;
-    for (int index=0; index<3; index++) {
-        float width;
-        float buttonX;
-        float heightY;
-        
-        if (index==1) {
-            width=60;
-            buttonX=375/2-30;
-            heightY=-10;
-        }
-        else{
-            if (index==0) {
-                buttonX=0;
-            }
-            else{
-                buttonX=KSCREEM_WIDTH-110;;
-            }
-            width=110;
-            heightY=0;
-        }
-        //添加3个button
-        UIButton *button=[[UIButton alloc]initWithFrame:CGRectMake(buttonX,heightY, width, 50)];
-        [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        
-        
-  
-        //给定tag 切换视图的时候用
-        if (self.page==0) {
-            [button setImage:[imageCommon objectAtIndex:index] forState:UIControlStateNormal];
+    
+    UIButton *firstPageButton=[[UIButton alloc]initWithFrame:CGRectMake(0,0, 110, 50)];
+    [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *thirdPageButton=[[UIButton alloc]initWithFrame:CGRectMake(KSCREEM_WIDTH-110,0, 110, 50)];
+    [UIButton buttonWithType:UIButtonTypeRoundedRect];
+   
+    [firstPageButton addTarget:self action:@selector(changet:) forControlEvents:UIControlEventTouchUpInside];
+    firstPageButton.tag=1;
+    [thirdPageButton addTarget:self action:@selector(changet:) forControlEvents:UIControlEventTouchUpInside];
+    thirdPageButton.tag=3;
+    
+    if (self.page==1) {
+        [firstPageButton setImage:[UIImage imageNamed:@"home_h"]forState:UIControlStateNormal];
+        [thirdPageButton setImage:[UIImage imageNamed:@"account_normal@2x"] forState:UIControlStateNormal];
 
-        }
-        else if (self.page==2){
-            [button setImage:[imageHighlight objectAtIndex:index] forState:UIControlStateNormal];
-
-        }
-        
-        
-        button.tag=index;
-        
-        [button addTarget:self action:@selector(changet:) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:backGroundIV];
-        [backGroundIV  addSubview:button];
     }
+    else if (self.page==3){
+    
+        [firstPageButton setImage:[UIImage imageNamed:@"home_normal@2x"]forState:UIControlStateNormal];
+        [thirdPageButton setImage:[UIImage imageNamed:@"account_h"] forState:UIControlStateNormal];
+
+    
+    }
+    
+    [self addSubview:backGroundIV];
+    [backGroundIV  addSubview:firstPageButton];
+    [backGroundIV addSubview:thirdPageButton];
+
+    
     
 }
 -(void)changet:(UIButton *)sender{

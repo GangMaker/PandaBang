@@ -53,10 +53,18 @@ typedef NS_ENUM(NSInteger, PBCellType){
     
     PB_TabView *tabView=[[PB_TabView alloc]initWithFrame:CGRectMake(0, KSCREEM_HEIGHT-50, KSCREEM_WIDTH, 50)];
     tabView.delegate=self;
-    tabView.page=2;
+    tabView.page=3;
 
     tabView.userInteractionEnabled=YES;
+    UIButton *sosButton=[[UIButton alloc]initWithFrame:CGRectMake(KSCREEM_WIDTH/2-30, KSCREEM_HEIGHT-60, 60, 60)];
+    sosButton.tag=2;
+    [sosButton setImage:[UIImage imageNamed:@"pan"] forState:UIControlStateNormal];
+    [sosButton addTarget:self action:@selector(changeT:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     [self.view addSubview:tabView];
+    [self.view addSubview:sosButton];
+
     //
     
 }

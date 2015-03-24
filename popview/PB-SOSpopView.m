@@ -835,24 +835,24 @@ volume.text=@"0毫升";
     }];
 
 }
--(void)chooseSex:(UIButton *)sender{
-    if ([sender.titleLabel.text isEqualToString:@"男"]) {
-        [sender setTitle:@"女" forState:UIControlStateNormal];
-    }
-    else{
-        [sender setTitle:@"男" forState:UIControlStateNormal];
-
-    }
-
-}
--(void)chooseHead:(UIButton *)sender{
-    [nameText resignFirstResponder];
-
-    UIActionSheet *chooseHead=[[UIActionSheet alloc]initWithTitle:@"头像照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拍照" otherButtonTitles:@"照片库", nil];
-    chooseHead.tag=33;
-    [chooseHead showInView:self.superview];
-
-}
+//-(void)chooseSex:(UIButton *)sender{
+//    if ([sender.titleLabel.text isEqualToString:@"男"]) {
+//        [sender setTitle:@"女" forState:UIControlStateNormal];
+//    }
+//    else{
+//        [sender setTitle:@"男" forState:UIControlStateNormal];
+//
+//    }
+//
+//}
+//-(void)chooseHead:(UIButton *)sender{
+//    [nameText resignFirstResponder];
+//
+//    UIActionSheet *chooseHead=[[UIActionSheet alloc]initWithTitle:@"头像照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拍照" otherButtonTitles:@"照片库", nil];
+//    chooseHead.tag=33;
+//    [chooseHead showInView:self.superview];
+//
+//}
 -(void)chooseBlood:(UIButton *)sender{
 
     if ([sender.titleLabel.text isEqualToString:@"A"]) {
@@ -1037,7 +1037,7 @@ volume.text=@"0毫升";
     HUD = [[MBProgressHUD alloc] initWithView:self.superview];
     [self.superview addSubview:HUD];
     
-    HUD.delegate=self.superview;
+    HUD.delegate=self;
 //    HUD.labelText = @"Connecting";
 //    HUD.minSize = CGSizeMake(135.f, 135.f);
     

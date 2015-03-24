@@ -219,7 +219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hql-QX-R60" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1056.5" y="93.5"/>
+            <point key="canvasLocation" x="-992.5" y="125.5"/>
         </scene>
         <!--First DetailSOS View Controller-->
         <scene sceneID="CIM-gl-z1f">
@@ -484,7 +484,214 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pot-sI-4o8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-610.5" y="104.5"/>
+            <point key="canvasLocation" x="-546.5" y="136.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="8Q0-He-U3Z">
+            <objects>
+                <navigationController storyboardIdentifier="navSOS" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yox-TP-3Ve" customClass="PB_NAVSOSPViewController" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GU6-fo-xzN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.010317793319999999" green="0.71668470989999999" blue="0.49745604700000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="1ed-Ch-kUL" kind="relationship" relationship="rootViewController" id="7uH-DZ-qJ0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KyD-4N-9yc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1568.5" y="916.5"/>
+        </scene>
+        <!--求助条1/2-->
+        <scene sceneID="E0r-mz-hGq">
+            <objects>
+                <viewController id="1ed-Ch-kUL" customClass="PB_SOSPOPViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RHp-F8-H8I"/>
+                        <viewControllerLayoutGuide type="bottom" id="CgL-u3-JGi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5d8-zN-gQ0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Ey-H9-xMM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCF-kr-yyB">
+                                        <rect key="frame" x="22" y="526" width="330" height="45"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" title="下一步">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="nextStepAction:" destination="1ed-Ch-kUL" eventType="touchUpInside" id="i9s-IP-89f"/>
+                                        </connections>
+                                    </button>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CAc-5Y-uoI">
+                                        <rect key="frame" x="20" y="411" width="330" height="50"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入11位手机号" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="NF7-Gk-NzQ">
+                                                <rect key="frame" x="100" y="11" width="220" height="28"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="1ed-Ch-kUL" id="alj-Vd-LE6"/>
+                                                </connections>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="备用电话：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5Y-7y-gPF">
+                                                <rect key="frame" x="23" y="14" width="74" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yDh-Kt-rth">
+                                        <rect key="frame" x="110" y="216" width="240" height="55"/>
+                                        <subviews>
+                                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="MMF-wo-VUz">
+                                                <rect key="frame" x="-2" y="13" width="245" height="31"/>
+                                                <connections>
+                                                    <action selector="volumeChange:" destination="1ed-Ch-kUL" eventType="valueChanged" id="0ik-go-rMg"/>
+                                                </connections>
+                                            </slider>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="35N-mq-7Kp">
+                                        <rect key="frame" x="110" y="126" width="240" height="55"/>
+                                        <subviews>
+                                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="xH1-6y-GdD">
+                                                <rect key="frame" x="-2" y="13" width="245" height="31"/>
+                                                <connections>
+                                                    <action selector="ageChange:" destination="1ed-Ch-kUL" eventType="valueChanged" id="bBF-eC-B0q"/>
+                                                </connections>
+                                            </slider>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fYs-AQ-IrS">
+                                        <rect key="frame" x="110" y="36" width="240" height="55"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入姓名" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4tz-iH-Zao">
+                                                <rect key="frame" x="93" y="14" width="139" height="28"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="求助姓名：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="arN-YO-een">
+                                                <rect key="frame" x="11" y="17" width="74" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mlC-rV-sIV">
+                                        <rect key="frame" x="20" y="126" width="55" height="55"/>
+                                        <color key="backgroundColor" red="0.010317793319999999" green="0.71668470989999999" blue="0.49745604700000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="男">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="chooseSex:" destination="1ed-Ch-kUL" eventType="touchUpInside" id="vJy-U9-5lQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yxN-8e-n0I">
+                                        <rect key="frame" x="20" y="216" width="55" height="55"/>
+                                        <color key="backgroundColor" red="0.010317793319999999" green="0.71668470989999999" blue="0.49745604700000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="A">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="chooseBlood:" destination="1ed-Ch-kUL" eventType="touchUpInside" id="iDL-Gl-hpY"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBV-EL-XKI">
+                                        <rect key="frame" x="20" y="36" width="55" height="55"/>
+                                        <color key="backgroundColor" red="0.010317793319999999" green="0.71668470989999999" blue="0.49745604700000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="chooseHead:" destination="1ed-Ch-kUL" eventType="touchUpInside" id="d4D-gH-gtD"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="age" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Isi-nq-k7N">
+                                        <rect key="frame" x="266" y="99" width="29" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="volume" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWV-Rj-jXx">
+                                        <rect key="frame" x="259" y="187" width="56" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgG-qX-eoM">
+                                        <rect key="frame" x="20" y="353" width="330" height="50"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入11位手机号" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Qep-rw-PLO">
+                                                <rect key="frame" x="100" y="11" width="220" height="28"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="1ed-Ch-kUL" id="rr9-z0-z1x"/>
+                                                </connections>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="求助电话：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSz-tX-Mon">
+                                                <rect key="frame" x="23" y="14" width="74" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="求助条1/2" id="uAh-XI-1VK">
+                        <barButtonItem key="leftBarButtonItem" title="X" id="1K7-Kj-7QS">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="backVC:" destination="1ed-Ch-kUL" id="UrD-3b-4hG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="age" destination="Isi-nq-k7N" id="OvT-cW-ywB"/>
+                        <outlet property="ageSlider" destination="xH1-6y-GdD" id="tm3-dC-g66"/>
+                        <outlet property="bloodButton" destination="yxN-8e-n0I" id="KT8-bR-x43"/>
+                        <outlet property="headButton" destination="gBV-EL-XKI" id="WRL-8y-hVp"/>
+                        <outlet property="scrollView" destination="2Ey-H9-xMM" id="mla-T2-Z3D"/>
+                        <outlet property="sexButton" destination="mlC-rV-sIV" id="coZ-K2-GB5"/>
+                        <outlet property="textName" destination="4tz-iH-Zao" id="Fqw-9d-27g"/>
+                        <outlet property="textTelephone" destination="Qep-rw-PLO" id="TaI-yr-zqy"/>
+                        <outlet property="textTelephoneS" destination="NF7-Gk-NzQ" id="hTr-jP-tb3"/>
+                        <outlet property="volume" destination="MWV-Rj-jXx" id="htr-zQ-XAs"/>
+                        <outlet property="volumeSlider" destination="MMF-wo-VUz" id="1rn-Ai-HM3"/>
+                        <segue destination="Fjk-nZ-2UR" kind="push" identifier="nextStep" id="7rz-nf-a2t"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1pw-ES-ALI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-992.5" y="822.5"/>
         </scene>
         <!--消息-->
         <scene sceneID="Hwz-Xf-fsN">
@@ -631,26 +838,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wmD-LH-2oX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-610.5" y="-651.5"/>
-        </scene>
-        <!--Item-->
-        <scene sceneID="yZI-UJ-dGu">
-            <objects>
-                <viewController id="I3R-UI-Qf9" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xGG-2J-6Av"/>
-                        <viewControllerLayoutGuide type="bottom" id="hG2-GZ-ThC"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="prh-DN-a2A">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="HBu-bB-YD5"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cDM-eu-Mij" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1568.4375" y="951.2323943661969"/>
         </scene>
         <!--Item-->
         <scene sceneID="Cnz-yS-ifa">
@@ -941,24 +1128,97 @@
             </objects>
             <point key="canvasLocation" x="-557.5" y="1922.5"/>
         </scene>
-        <!--View Controller-->
+        <!--求助条2/2-->
         <scene sceneID="MMc-iR-grm">
             <objects>
-                <viewController id="Fjk-nZ-2UR" sceneMemberID="viewController">
+                <viewController id="Fjk-nZ-2UR" customClass="PB_SOSPOPSecondViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ucx-Af-seN"/>
                         <viewControllerLayoutGuide type="bottom" id="aYu-vc-PYl"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="hPK-u1-geE">
+                    <view key="view" contentMode="scaleToFill" id="hPK-u1-geE" customClass="UIControl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hqZ-aR-pSp">
+                                <rect key="frame" x="20" y="100" width="335" height="130"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8NA-hZ-K6U">
+                                <rect key="frame" x="20" y="399" width="335" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Bjt-yl-xlj">
+                                        <rect key="frame" x="100" y="11" width="220" height="28"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <segue destination="5sS-jP-BYl" kind="push" id="XxO-jP-c8h"/>
+                                        </connections>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="求助位置：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ulY-Eo-ami">
+                                        <rect key="frame" x="23" y="14" width="74" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PCF-ka-5Jd">
+                                <rect key="frame" x="20" y="230" width="335" height="130"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tlb-sk-VXB">
+                                        <rect key="frame" x="20" y="0.0" width="295" height="115"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <connections>
+                            <action selector="recoverKeyboard:" destination="Fjk-nZ-2UR" eventType="touchUpInside" id="ktm-pQ-3bQ"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" title="求助条2/2" id="rwQ-9b-iHz">
+                        <barButtonItem key="rightBarButtonItem" title="发布" id="yZe-5S-b0m">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="publishS:" destination="Fjk-nZ-2UR" id="Amd-f3-kNW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="imageBackView" destination="hqZ-aR-pSp" id="qrr-wa-7Eh"/>
+                        <outlet property="textView" destination="Tlb-sk-VXB" id="5aw-vD-neL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fqT-Vy-qon" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-519.5" y="924.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="eeA-98-Eug">
+            <objects>
+                <viewController id="5sS-jP-BYl" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1Ty-YY-wf2"/>
+                        <viewControllerLayoutGuide type="bottom" id="mnH-fg-oFe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="y7P-xd-Gp1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="WXJ-MB-b7m"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fqT-Vy-qon" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EZi-k2-mC3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="362.8125" y="1430.8098591549292"/>
+            <point key="canvasLocation" x="366.5" y="916.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="4mo-ju-dnd">
@@ -1435,7 +1695,6 @@ ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgA
                     </tabBar>
                     <connections>
                         <segue destination="Hxc-5N-HWx" kind="relationship" relationship="viewControllers" id="ygf-qT-AjL"/>
-                        <segue destination="I3R-UI-Qf9" kind="relationship" relationship="viewControllers" id="H7W-DY-8zD"/>
                         <segue destination="aIt-ZZ-nWt" kind="relationship" relationship="viewControllers" id="2dh-Ma-tNr"/>
                     </connections>
                 </tabBarController>

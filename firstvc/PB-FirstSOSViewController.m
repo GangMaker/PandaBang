@@ -64,9 +64,16 @@
 //    tabView.image=[UIImage imageNamed:@"item_detail_bottom_bar@2x"];
 
     tabView.delegate=self;
-    tabView.page=0;
+    tabView.page=1;
     tabView.userInteractionEnabled=YES;
+    UIButton *sosButton=[[UIButton alloc]initWithFrame:CGRectMake(KSCREEM_WIDTH/2-30, KSCREEM_HEIGHT-60, 60, 60)];
+    sosButton.tag=2;
+    [sosButton setImage:[UIImage imageNamed:@"pan"] forState:UIControlStateNormal];
+    [sosButton addTarget:self action:@selector(changeT:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
       [self.view addSubview:tabView];
+    [self.view addSubview:sosButton];
     //
     
 }

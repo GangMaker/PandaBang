@@ -10,6 +10,7 @@
 #import "ViewController.h"
 #import "PB-NAVLoginViewController.h"
 #import "PB-FirstSOSViewController.h"
+#import "PB-NAVSOSPViewController.h"
 #import "UserDB.h"
 #import "UserModal.h"
 
@@ -60,12 +61,12 @@ UIImagePickerController *myPickerController;
 //切换页面的时候调用
 -(void)changeTabView:(UIButton *)sender{
     NSLog(@"1111");
-    if (sender.tag==0) {
+    if (sender.tag==1) {
         
-        self.selectedIndex=sender.tag;
+        self.selectedIndex=0;
     
 }
-    else if (sender.tag==2) {
+    else if (sender.tag==3) {
         NSLog(@"++++++%d",self.parentVC.isLogin);
 
 //    首先弹出的是登入页 如果有登入直接换视图
@@ -76,18 +77,25 @@ UIImagePickerController *myPickerController;
         
         [self presentViewController:loginVC animated:YES completion:^{
             
-            self.selectedIndex=sender.tag;
+            self.selectedIndex=1;
 
             
         }];
         }
         else{
-            self.selectedIndex=sender.tag;}
+            self.selectedIndex=1;}
 
     }
     else{
-        if (self.mySosView==nil) {
+        PB_NAVSOSPViewController *navSOS=K_GETFROM_STORYBOARD(@"Main", @"navSOS");
+        [self presentViewController:navSOS animated:YES completion:^{
             
+            
+            
+        }];
+
+//        if (self.mySosView==nil) {
+        
 //中间那个是直接弹出视图 视图里面填写sos相关的信息(弹出sos)
 //        self.mySosView=[[PB_SOSView alloc]initWithFrame:CGRectMake(0,KSCREEM_HEIGHT, KSCREEM_WIDTH, 280)];
 //        self.mySosView.delegate=self;
@@ -108,8 +116,8 @@ UIImagePickerController *myPickerController;
 //    [self.view addSubview:self.mySosView];t
 //     [self PopView];
 //    让父控制器的左移效果失灵
-           lightView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, KSCREEM_WIDTH, KSCREEM_HEIGHT)];
-            lightView.backgroundColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+//           lightView=[[UIView alloc]initWithFrame:CGRectMake(0, 0, KSCREEM_WIDTH, KSCREEM_HEIGHT)];
+//            lightView.backgroundColor=[UIColor colorWithRed:0 green:0 blue:0 alpha:0];
 
 //            for (int index=0; index<5; index++) {
 //                UIButton *button=[[UIButton alloc]initWithFrame:CGRectMake(20+75*index, 500, 38, 38)];
@@ -119,25 +127,25 @@ UIImagePickerController *myPickerController;
 //                [lightView addSubview:button];
 //            }
             
-            self.mySosView=[[PB_SOSpopView alloc]initWithFrame:CGRectMake(20, 120, 335, 335)];
-            [self.mySosView getAllThings];
-            self.mySosView.backgroundColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:1];
-            self.mySosView.delegate=self;
-            UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(PopBackview)];
-            [tap setNumberOfTapsRequired:1];
-            [tap setNumberOfTouchesRequired:1];
-        [lightView addGestureRecognizer:tap];
-            [self.view addSubview:lightView];
-            
-            [self.view addSubview:self.mySosView];
-
-                    [self PopView];
+//            self.mySosView=[[PB_SOSpopView alloc]initWithFrame:CGRectMake(20, 120, 335, 335)];
+//            [self.mySosView getAllThings];
+//            self.mySosView.backgroundColor=[UIColor colorWithRed:1 green:1 blue:1 alpha:1];
+//            self.mySosView.delegate=self;
+//            UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(PopBackview)];
+//            [tap setNumberOfTapsRequired:1];
+//            [tap setNumberOfTouchesRequired:1];
+//        [lightView addGestureRecognizer:tap];
+//            [self.view addSubview:lightView];
+//            
+//            [self.view addSubview:self.mySosView];
+//
+//                    [self PopView];
         self.parentVC=(ViewController *)self.parentViewController;
         self.parentVC.popViewCloseAnimation=YES;
     }
     }
     
-}
+//}
 //-(void)changeContentButton:(UIButton *)sender{
 //
 //
