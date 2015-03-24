@@ -52,10 +52,12 @@ switch (pan.state) {
             self.popPan=YES;
             vc.panG.enabled=NO;
             
+            
         }
         if ([pan locationInView:self.view].x>KSCREEM_WIDTH*0.8&&DeltaX<0&&self.popPan==NO) {
             self.MainPan=YES;
             self.panG.enabled=NO;
+            NSLog(@"asd");
         }
         if (self.popPan==YES&&DeltaX>0) {
             [self.view setFrame:CGRectMake(ChangeX, 0, 375, 677)];

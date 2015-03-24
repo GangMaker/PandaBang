@@ -30,7 +30,8 @@
         self.imageV=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         self.imageV.image=[UIImage imageNamed:@"popV"];
        self.tableV=[[UITableView alloc]initWithFrame:CGRectMake(0, 5, self.frame.size.width, self.frame.size.height) style:UITableViewStylePlain];
-        self.tableV.backgroundColor=[UIColor clearColor];
+        self.tableV.backgroundColor=[UIColor blackColor];
+        self.tableV.alpha=0.7;
         self.tableV.delegate=self;
        self.tableV.dataSource=self;
         self.tableV.scrollEnabled=NO;
