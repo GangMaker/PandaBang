@@ -32,7 +32,7 @@
 //    设置添加照片的按钮
     UIButton *addImageButton=[[UIButton alloc]initWithFrame:CGRectMake(20, 400, 90, 90)];
     addImageButton.tag=304;
-    addImageButton.backgroundColor=[UIColor redColor];
+    addImageButton.backgroundColor=[UIColor groupTableViewBackgroundColor];
     [addImageButton addTarget:self action:@selector(addImage:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:addImageButton];
 
