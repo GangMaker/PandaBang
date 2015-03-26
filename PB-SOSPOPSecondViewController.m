@@ -28,14 +28,13 @@
 //    
     imageCollection=[NSMutableArray arrayWithCapacity:3];
 //    设置文字框的边框
-    self.textView.layer.borderColor=[UIColor blackColor].CGColor;
-    self.textView.layer.borderWidth=1.0f;
+   
 //    设置添加照片的按钮
-    UIButton *addImageButton=[[UIButton alloc]initWithFrame:CGRectMake(20, 20, 90, 90)];
+    UIButton *addImageButton=[[UIButton alloc]initWithFrame:CGRectMake(20, 400, 90, 90)];
     addImageButton.tag=304;
-    addImageButton.backgroundColor=[UIColor groupTableViewBackgroundColor];
+    addImageButton.backgroundColor=[UIColor redColor];
     [addImageButton addTarget:self action:@selector(addImage:) forControlEvents:UIControlEventTouchUpInside];
-    [self.imageBackView addSubview:addImageButton];
+    [self.view addSubview:addImageButton];
 
     // Do any additional setup after loading the view.
 }
@@ -60,32 +59,6 @@
 
 
 
-- (IBAction)publishS:(UIBarButtonItem *)sender {
-    [self.textView resignFirstResponder];
-    NSString *error=@"";
-//    判断文字框是否有内容
-    if ([self.textView.text isEqualToString:@""]) {
-        error=@"写点什么吧";
-    }
-//    没有内容 警告
-    if ([error isEqualToString:@""]) {
-       
-        UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"求助不是儿戏" message:@"确认求助？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        alertView.tag=666;
-       
-        [alertView show];
-
-    }
-//    有 弹出提示框
-    else{
-        UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"注意" message:error delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-        [alertView show];
-
-    
-    }
-    
-    
-}
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (alertView.tag==666) {
         if (buttonIndex==1) {
@@ -98,8 +71,18 @@
 
 }
 //回收键盘
+- (IBAction)nextStep:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"nextStep2" sender:nil];
+}
+
 -(IBAction)recoverKeyboard:(UIControl *)sender {
-     [self.textView resignFirstResponder];
+    }
+
+- (IBAction)popVC:(UIButton *)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)nextStep2:(UIButton *)sender {
 }
 //添加图片选择
 - (void)addImage:(UIButton *)sender {
@@ -162,22 +145,22 @@
 -(void)addImageV:(UIImage *)image{
     
     float imageCount=[imageCollection count];
-    UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(20+100*imageCount, 20, 90, 90)];
+    UIImageView *imageV=[[UIImageView alloc]initWithFrame:CGRectMake(20+100*imageCount, 400, 90, 90)];
     imageV.image=image;
     imageV.userInteractionEnabled=YES;
     UILongPressGestureRecognizer *longImage=[[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longAction:)];
     [longImage setMinimumPressDuration:0.8f];
     [longImage setAllowableMovement:50.0];
     [imageV addGestureRecognizer:longImage];
-    [self.imageBackView addSubview:imageV];
+    [self.view addSubview:imageV];
     imageV.tag=301+imageCount;
     
     
     [UIView animateWithDuration:0.3 animations:^{
-        UIButton *addImageB=(UIButton *)[self.imageBackView viewWithTag:304];
+        UIButton *addImageB=(UIButton *)[self.view viewWithTag:304];
         if (imageCount<2) {
             
-            [addImageB setFrame:CGRectMake(20+100*(imageCount+1), 20, 90, 90)];
+            [addImageB setFrame:CGRectMake(20+100*(imageCount+1), 400, 90, 90)];
         }
         else{
            addImageB.hidden=YES;
@@ -193,31 +176,31 @@
 
 //长按键的效果  点击相应时间开始触发动画
 -(void)longAction:(UILongPressGestureRecognizer *)longG{
-    CGPoint firstImageP=CGPointMake(65, 65);
-    CGPoint  secondImageP=CGPointMake(165, 65);
-    CGPoint  thirdImageP=CGPointMake(265, 65);
-    UIImageView *imageS=(UIImageView *)[self.imageBackView viewWithTag:302];
-    UIImageView *imageT=(UIImageView *)[self.imageBackView viewWithTag:303];
+    CGPoint firstImageP=CGPointMake(65, 445);
+    CGPoint  secondImageP=CGPointMake(165, 445);
+    CGPoint  thirdImageP=CGPointMake(265, 445);
+    UIImageView *imageS=(UIImageView *)[self.view viewWithTag:302];
+    UIImageView *imageT=(UIImageView *)[self.view viewWithTag:303];
     
-    UIImageView *imageF=(UIImageView *)[self.imageBackView viewWithTag:301];
+    UIImageView *imageF=(UIImageView *)[self.view viewWithTag:301];
 //    还没开始移动
     if (allowMove==NO) {
 //  弹出回收按钮
-        UIImageView *wasteBasket=[[UIImageView alloc]initWithFrame:CGRectMake(-66, 45, 66, 40)];
+        UIImageView *wasteBasket=[[UIImageView alloc]initWithFrame:CGRectMake(-66, 425, 66, 40)];
         
         wasteBasket.backgroundColor=[UIColor redColor];
         wasteBasket.tag=300;
-        [self.imageBackView addSubview:wasteBasket];
+        [self.view addSubview:wasteBasket];
 //  同时 图片变大可以进行移动
         [UIView animateWithDuration:0.3 animations:^{
             [longG.view setBounds:CGRectMake(longG.view.bounds.origin.x, longG.view.bounds.origin.y, longG.view.bounds.size.width*1.2, longG.view.bounds.size.height*1.2)];
-            [self.imageBackView bringSubviewToFront:longG.view];
-            recordMove=[longG locationInView:self.imageBackView];
+            [self.view bringSubviewToFront:longG.view];
+            recordMove=[longG locationInView:self.view];
             recordMove=CGPointMake(recordMove.x-longG.view.center.x,recordMove.y-longG.view.center.y);
             
             allowMove=YES;
             
-            [wasteBasket setFrame:CGRectMake(0, 45, 66, 40)];
+            [wasteBasket setFrame:CGRectMake(0, 425, 66, 40)];
         } completion:^(BOOL finished) {
             
             
@@ -229,9 +212,9 @@
         
         float imageCount=[imageCollection count];
         
-        lastPoint=[longG locationInView:self.imageBackView];
+        lastPoint=[longG locationInView:self.view];
         longG.view.center=CGPointMake(lastPoint.x-recordMove.x, lastPoint.y-recordMove.y);
-        UIImageView *wasteBasket=(UIImageView *)[self.imageBackView viewWithTag:300];
+        UIImageView *wasteBasket=(UIImageView *)[self.view viewWithTag:300];
 //        如果移动的事第一个图片
         if (longG.view.tag==301) {
 //            判断其位置 给出相应的动画 如果在大于250的位置 图片二三都需向左移动
@@ -377,7 +360,7 @@
         }
 //       但当试图进入这个范围 也就是回收按钮的位置 回收按钮变大 图片变透明 如果在这个位置放手 图片则被删除
         if (lastPoint.x<66&&lastPoint.x>0) {
-            if (lastPoint.y<85&&lastPoint.y>45) {
+            if (lastPoint.y<485&&lastPoint.y>425) {
                 longG.view.alpha=0.7;
                 
                 wasteBasket.alpha=0.7;
@@ -417,14 +400,14 @@
 }
 //删除图片的方法
 -(void)delayDeleteMove:(UIImageView *)longV{
-    CGPoint firstImageP=CGPointMake(65, 65);
-    CGPoint  secondImageP=CGPointMake(165, 65);
+    CGPoint firstImageP=CGPointMake(65, 445);
+    CGPoint  secondImageP=CGPointMake(165, 445);
     //    CGPoint  thirdImageP=CGPointMake(265+self.frame.size.width, 175);
-    UIButton *addImageButton=(UIButton *)[self.imageBackView viewWithTag:304];
-    UIImageView *imageS=(UIImageView *)[self.imageBackView  viewWithTag:302];
-    UIImageView *imageT=(UIImageView *)[self.imageBackView  viewWithTag:303];
+    UIButton *addImageButton=(UIButton *)[self.view viewWithTag:304];
+    UIImageView *imageS=(UIImageView *)[self.view  viewWithTag:302];
+    UIImageView *imageT=(UIImageView *)[self.view  viewWithTag:303];
     
-    UIImageView *imageF=(UIImageView *)[self.imageBackView  viewWithTag:301];
+    UIImageView *imageF=(UIImageView *)[self.view  viewWithTag:301];
     
     float imageCount=[imageCollection count];
 //    当触发的事第一个图片 然后根据可能存在的图片数 给出相应的动画  然后remove自己
@@ -501,10 +484,10 @@
         
     }
 //    在删除后 回收按钮同时动画移除
-    UIImageView *wasteBasket=(UIImageView *)[self.imageBackView  viewWithTag:300];
+    UIImageView *wasteBasket=(UIImageView *)[self.view  viewWithTag:300];
     
     [UIView animateWithDuration:0.2 animations:^{
-        [wasteBasket setFrame: CGRectMake(-66, 45, 66, 40)];
+        [wasteBasket setFrame: CGRectMake(-66, 425, 66, 40)];
         [longV removeFromSuperview];
         [imageCollection removeObjectAtIndex:longV.tag-301];
         
@@ -526,10 +509,10 @@
     NSString *thirdImagex=[NSString stringWithFormat:@"%f",265.0f ];
     
     
-    UIImageView *imageS=(UIImageView *)[self.imageBackView  viewWithTag:302];
-    UIImageView *imageT=(UIImageView *)[self.imageBackView  viewWithTag:303];
+    UIImageView *imageS=(UIImageView *)[self.view  viewWithTag:302];
+    UIImageView *imageT=(UIImageView *)[self.view  viewWithTag:303];
     
-    UIImageView *imageF=(UIImageView *)[self.imageBackView  viewWithTag:301];
+    UIImageView *imageF=(UIImageView *)[self.view  viewWithTag:301];
     float imageCount=[imageCollection count];
     
 //   假设移动的事第一个tag的图片 可以知道其他图片所在的位置 然后根据所在的位置给他们相应这个位置的tag 然后移动的图片到空缺位置的地方
@@ -548,7 +531,7 @@
             
             longV.tag=906-imageS.tag-imageT.tag;
             [UIView animateWithDuration:0.2 animations:^{
-                [longV setCenter:CGPointMake([[numberArray objectAtIndex:longV.tag-301] floatValue], 65)];
+                [longV setCenter:CGPointMake([[numberArray objectAtIndex:longV.tag-301] floatValue], 445)];
                 
             }];
             
@@ -561,7 +544,7 @@
             longV.tag=603-imageS.tag;
             
             [UIView animateWithDuration:0.2 animations:^{
-                [longV setCenter:CGPointMake([[numberArray objectAtIndex:longV.tag-301] floatValue], 65)];
+                [longV setCenter:CGPointMake([[numberArray objectAtIndex:longV.tag-301] floatValue], 445)];
                 
             }];
             
@@ -569,7 +552,7 @@
         }
         else if (imageCount==1){
             [UIView animateWithDuration:0.2 animations:^{
-                [longV setCenter:CGPointMake(65, 65)];
+                [longV setCenter:CGPointMake(65, 445)];
                 
             }];
             
@@ -593,7 +576,7 @@
             
             longV.tag=906-imageF.tag-imageT.tag;
             [UIView animateWithDuration:0.2 animations:^{
-             [longV setCenter:CGPointMake([[numberArray objectAtIndex:longV.tag-301] floatValue], 65)];
+             [longV setCenter:CGPointMake([[numberArray objectAtIndex:longV.tag-301] floatValue], 445)];
                 
             }];
             
@@ -609,7 +592,7 @@
             longV.tag=603-imageF.tag;
             
             [UIView animateWithDuration:0.2 animations:^{
-               [longV setCenter:CGPointMake([[numberArray objectAtIndex:longV.tag-301] floatValue], 65)];
+               [longV setCenter:CGPointMake([[numberArray objectAtIndex:longV.tag-301] floatValue], 445)];
                 
             }];
             
@@ -630,7 +613,7 @@
         
         longV.tag=906-imageF.tag-imageS.tag;
         [UIView animateWithDuration:0.2 animations:^{
-            [longV setCenter:CGPointMake([[numberArray objectAtIndex:longV.tag-301] floatValue], 65)];
+            [longV setCenter:CGPointMake([[numberArray objectAtIndex:longV.tag-301] floatValue], 445)];
             
         }];
         
@@ -641,13 +624,13 @@
         
         
     }
-    UIImageView *wasteBasket=(UIImageView *)[self.imageBackView  viewWithTag:300];
+    UIImageView *wasteBasket=(UIImageView *)[self.view  viewWithTag:300];
     
     [UIView animateWithDuration:0.2 animations:^{
-        [wasteBasket setFrame: CGRectMake(-66, 45, 66, 40)];
+        [wasteBasket setFrame: CGRectMake(-66, 425, 66, 40)];
         longV.alpha=1;
         [longV setBounds:CGRectMake(longV.bounds.origin.x, longV.bounds.origin.y, 90, 90)];
-        [self.imageBackView  sendSubviewToBack:longV];
+        [self.view  sendSubviewToBack:longV];
         
     } completion:^(BOOL finished) {
         [wasteBasket removeFromSuperview];

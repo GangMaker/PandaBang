@@ -61,13 +61,11 @@
     //    键盘添加通知
     [self keyboardAddNSNotification];
 
-    [self keyboardAddNSNotification];
 }
 
 
 -(void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [ [UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
     [ [UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     

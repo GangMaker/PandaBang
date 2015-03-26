@@ -18,7 +18,7 @@
     [super viewDidLoad];
 //    弹出视图的导航页面 切换效果系统的push
 //    设置bar上的字体
-    [self.navigationBar setTintColor:[UIColor whiteColor]];
+    [self.navigationBar setTintColor:[UIColor blackColor]];
     // Do any additional setup after loading the view.
 }
 

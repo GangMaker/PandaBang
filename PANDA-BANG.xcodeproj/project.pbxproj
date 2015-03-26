@@ -12,6 +12,7 @@
 		17B2264F1AC10E9F0063F6D0 /* PB-SOSPOPSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B2264E1AC10E9F0063F6D0 /* PB-SOSPOPSecondViewController.m */; };
 		17B226521AC265060063F6D0 /* PB-SOSPOPMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B226511AC265060063F6D0 /* PB-SOSPOPMapViewController.m */; };
 		17B226551AC365660063F6D0 /* PB-LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B226541AC365660063F6D0 /* PB-LocationCell.m */; };
+		17B226581AC3D1C70063F6D0 /* PB-SOSPOPThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B226571AC3D1C70063F6D0 /* PB-SOSPOPThirdViewController.m */; };
 		17CAF1641ABE99C300BDD8F9 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17CAF0BC1ABE99C300BDD8F9 /* AVOSCloud.framework */; };
 		17CAF1651ABE99C300BDD8F9 /* NSString+Valid.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CAF0BF1ABE99C300BDD8F9 /* NSString+Valid.m */; };
 		17CAF1661ABE99C300BDD8F9 /* PB-SOSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CAF0C21ABE99C300BDD8F9 /* PB-SOSCell.m */; };
@@ -153,6 +154,8 @@
 		17B226511AC265060063F6D0 /* PB-SOSPOPMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PB-SOSPOPMapViewController.m"; path = "../PB-SOSPOPMapViewController.m"; sourceTree = "<group>"; };
 		17B226531AC365660063F6D0 /* PB-LocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PB-LocationCell.h"; path = "../PB-LocationCell.h"; sourceTree = "<group>"; };
 		17B226541AC365660063F6D0 /* PB-LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PB-LocationCell.m"; path = "../PB-LocationCell.m"; sourceTree = "<group>"; };
+		17B226561AC3D1C70063F6D0 /* PB-SOSPOPThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PB-SOSPOPThirdViewController.h"; path = "../PB-SOSPOPThirdViewController.h"; sourceTree = "<group>"; };
+		17B226571AC3D1C70063F6D0 /* PB-SOSPOPThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PB-SOSPOPThirdViewController.m"; path = "../PB-SOSPOPThirdViewController.m"; sourceTree = "<group>"; };
 		17CAF0BC1ABE99C300BDD8F9 /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
 		17CAF0BE1ABE99C300BDD8F9 /* NSString+Valid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Valid.h"; sourceTree = "<group>"; };
 		17CAF0BF1ABE99C300BDD8F9 /* NSString+Valid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Valid.m"; sourceTree = "<group>"; };
@@ -435,6 +438,8 @@
 				17CAF0E11ABE99C300BDD8F9 /* PB-POPupView.m */,
 				17B2264A1AC0D0EB0063F6D0 /* PB-NAVSOSPViewController.h */,
 				17B2264B1AC0D0EB0063F6D0 /* PB-NAVSOSPViewController.m */,
+				17B226561AC3D1C70063F6D0 /* PB-SOSPOPThirdViewController.h */,
+				17B226571AC3D1C70063F6D0 /* PB-SOSPOPThirdViewController.m */,
 				17B226471AC0D0B50063F6D0 /* PB-SOSPOPViewController.h */,
 				17B226481AC0D0B50063F6D0 /* PB-SOSPOPViewController.m */,
 				17B2264D1AC10E9F0063F6D0 /* PB-SOSPOPSecondViewController.h */,
@@ -907,6 +912,7 @@
 				CC3BB9FC1A6E157700D75B44 /* AppDelegate.m in Sources */,
 				17CAF1C01ABE99C300BDD8F9 /* PB-ThirdGroupDetailViewController.m in Sources */,
 				17B226551AC365660063F6D0 /* PB-LocationCell.m in Sources */,
+				17B226581AC3D1C70063F6D0 /* PB-SOSPOPThirdViewController.m in Sources */,
 				17CAF16B1ABE99C300BDD8F9 /* PB-FirstSOSViewController.m in Sources */,
 				17CAF1651ABE99C300BDD8F9 /* NSString+Valid.m in Sources */,
 				17CAF1751ABE99C300BDD8F9 /* PB-SCREENView.m in Sources */,

@@ -129,7 +129,7 @@
     span.latitudeDelta = 0.01;
     span.longitudeDelta = 0.01;
     MKCoordinateRegion region;
-        region.center = centerCoordinate;
+    region.center = centerCoordinate;
     region.span = span;
     [_mapView setRegion:region animated:YES];
 
@@ -137,7 +137,7 @@
     
     [geocoder reverseGeocodeLocation:gett completionHandler:^(NSArray *placemarks, NSError *error) {
         for (CLPlacemark *placemark in placemarks) {
-//                       [self.currentLocation addObject:placemark.administrativeArea];
+//            [self.currentLocation addObject:placemark.administrativeArea];
 //            [self.currentLocation addObject:placemark.subLocality];
 //            [self.currentLocation addObject:placemark.name];
 //            NSLog(@"%@",self.currentLocation);

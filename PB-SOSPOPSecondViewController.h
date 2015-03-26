@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
 @interface PB_SOSPOPSecondViewController : UIViewController<UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,MBProgressHUDDelegate,UIAlertViewDelegate>
-@property (weak, nonatomic) IBOutlet UIView *imageBackView;
-@property (weak, nonatomic) IBOutlet UITextView *textView;
 
 
-- (IBAction)publishS:(UIBarButtonItem *)sender;
+
+- (IBAction)nextStep:(UIButton *)sender;
 
 - (IBAction)recoverKeyboard:(UIControl *)sender;
 
+- (IBAction)popVC:(UIButton *)sender;
+- (IBAction)nextStep2:(UIButton *)sender;
 
 @end
