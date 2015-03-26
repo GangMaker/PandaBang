@@ -63,7 +63,7 @@
     //    [testObject save];
 
     [super viewDidLoad];
-    
+   [ [UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
           //   设置状态栏的颜色
     [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleLightContent];

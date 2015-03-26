@@ -34,6 +34,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    添加左移动的效果
+    [ [UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+
     self.panG=[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panAction:)];
     self.panG.delegate=self;
   [self.view addGestureRecognizer:self.panG];
@@ -62,12 +64,15 @@
     [self keyboardAddNSNotification];
 }
 
--(void)viewDidDisappear:(BOOL)animated{
-//移除本通知
-    [super viewDidDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [ [UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+
+    [ [UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
 }
+
 -(void)getDataFromServer{
 //  这里应该有所有关联数据
 //暂时数据

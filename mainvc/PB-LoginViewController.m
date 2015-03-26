@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [ [UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 //    这个是登入页面的vc
     // Do any additional setup after loading the view.
 }
@@ -27,7 +28,13 @@
 -(void)viewDidAppear:(BOOL)animated{
 
     [super viewDidAppear:animated];
+
     [self.UserPhoneNameTF becomeFirstResponder];
+
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [ [UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
 }
 /*
