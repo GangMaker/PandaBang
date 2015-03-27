@@ -13,6 +13,7 @@
 		17B226521AC265060063F6D0 /* PB-SOSPOPMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B226511AC265060063F6D0 /* PB-SOSPOPMapViewController.m */; };
 		17B226551AC365660063F6D0 /* PB-LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B226541AC365660063F6D0 /* PB-LocationCell.m */; };
 		17B226581AC3D1C70063F6D0 /* PB-SOSPOPThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B226571AC3D1C70063F6D0 /* PB-SOSPOPThirdViewController.m */; };
+		17B2265B1AC4B6B30063F6D0 /* locationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 17B2265A1AC4B6B30063F6D0 /* locationInfo.m */; };
 		17CAF1641ABE99C300BDD8F9 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17CAF0BC1ABE99C300BDD8F9 /* AVOSCloud.framework */; };
 		17CAF1651ABE99C300BDD8F9 /* NSString+Valid.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CAF0BF1ABE99C300BDD8F9 /* NSString+Valid.m */; };
 		17CAF1661ABE99C300BDD8F9 /* PB-SOSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CAF0C21ABE99C300BDD8F9 /* PB-SOSCell.m */; };
@@ -164,6 +165,8 @@
 		17B226541AC365660063F6D0 /* PB-LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PB-LocationCell.m"; path = "../PB-LocationCell.m"; sourceTree = "<group>"; };
 		17B226561AC3D1C70063F6D0 /* PB-SOSPOPThirdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "PB-SOSPOPThirdViewController.h"; path = "../PB-SOSPOPThirdViewController.h"; sourceTree = "<group>"; };
 		17B226571AC3D1C70063F6D0 /* PB-SOSPOPThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "PB-SOSPOPThirdViewController.m"; path = "../PB-SOSPOPThirdViewController.m"; sourceTree = "<group>"; };
+		17B226591AC4B6B30063F6D0 /* locationInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = locationInfo.h; path = ../locationInfo.h; sourceTree = "<group>"; };
+		17B2265A1AC4B6B30063F6D0 /* locationInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = locationInfo.m; path = ../locationInfo.m; sourceTree = "<group>"; };
 		17CAF0BC1ABE99C300BDD8F9 /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
 		17CAF0BE1ABE99C300BDD8F9 /* NSString+Valid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Valid.h"; sourceTree = "<group>"; };
 		17CAF0BF1ABE99C300BDD8F9 /* NSString+Valid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Valid.m"; sourceTree = "<group>"; };
@@ -478,6 +481,8 @@
 			children = (
 				17CAF0BE1ABE99C300BDD8F9 /* NSString+Valid.h */,
 				17CAF0BF1ABE99C300BDD8F9 /* NSString+Valid.m */,
+				17B226591AC4B6B30063F6D0 /* locationInfo.h */,
+				17B2265A1AC4B6B30063F6D0 /* locationInfo.m */,
 			);
 			path = catagroy;
 			sourceTree = "<group>";
@@ -1209,6 +1214,7 @@
 				17CAF1761ABE99C300BDD8F9 /* PB-SOSpopView.m in Sources */,
 				17CAF1AD1ABE99C300BDD8F9 /* SDWebImageDownloaderOperation.m in Sources */,
 				17CAF1B41ABE99C300BDD8F9 /* UIImageView+HighlightedWebCache.m in Sources */,
+				17B2265B1AC4B6B30063F6D0 /* locationInfo.m in Sources */,
 				17CAF1A41ABE99C300BDD8F9 /* UIScrollView+MJRefresh.m in Sources */,
 				17CAF1B91ABE99C300BDD8F9 /* UserModal.m in Sources */,
 				17CAF1771ABE99C300BDD8F9 /* PB-TabView.m in Sources */,

@@ -10,6 +10,7 @@
 
 @interface PB_SOSPOPViewController : UIViewController<UIActionSheetDelegate,UITextFieldDelegate,UIScrollViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIButton *locationButton;
 @property (weak, nonatomic) IBOutlet UITextField *textName;
 
 @property (weak, nonatomic) IBOutlet UITextField *textAge;

@@ -13,6 +13,7 @@
 #import "PB-NAVSOSPViewController.h"
 #import "UserDB.h"
 #import "UserModal.h"
+#import "locationInfo.h"
 
 
 #define K_GETFROM_STORYBOARD(SBNAME,VCNAME)  [[UIStoryboard storyboardWithName:SBNAME bundle:[NSBundle mainBundle]]     instantiateViewControllerWithIdentifier:VCNAME]
@@ -24,6 +25,7 @@
 @implementation PB_TabBarMenuViewController{
 UIImagePickerController *myPickerController;
     UIImagePickerController *myPickerControllerHead;
+   NSMutableArray *currentLocation;
 
     CLLocationManager *locationManager;
     UserDB *userDB;
@@ -44,6 +46,8 @@ UIImagePickerController *myPickerController;
     [userDB addUser:modal];
   
 //隐藏原来的tabbar
+   currentLocation=[NSMutableArray array];
+
     self.tabBar.hidden=YES;
     [self setLocationManager];
 //自定义一个tabbar
@@ -135,12 +139,16 @@ UIImagePickerController *myPickerController;
 }
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     CLLocation *gett;
+    locationInfo *locInfo= [locationInfo defaultManager];
 
     for (CLLocation *get in locations) {
         
         gett=get;
+        [locInfo saveLocation:get];
+        
+        
     }
-    self.currentLocation=[NSMutableArray array];
+    
  
     CLGeocoder *geocoder=[[CLGeocoder alloc]init];
 
@@ -154,10 +162,12 @@ UIImagePickerController *myPickerController;
 //                 NSLog(@"subLocality:%@",placemark.subLocality);          //区
 //                 NSLog(@"country:%@",placemark.country);               //国家
 //                 位置的label
-                 [self.currentLocation addObject:placemark.administrativeArea];
-                 [self.currentLocation addObject:placemark.subLocality];
-                 [self.currentLocation addObject:placemark.name];
-                 NSLog(@"%@",self.currentLocation);
+                 
+                 NSString *locationLabel=[NSString stringWithFormat:@"%@ %@ %@",placemark.administrativeArea,placemark.subLocality,placemark.name];
+//                 [currentLocation addObject:placemark.administrativeArea];
+//                 [currentLocation addObject:placemark.subLocality];
+//                 [currentLocation addObject:placemark.name];
+                 [locInfo saveLocationLabel:locationLabel];
 
                  
              }

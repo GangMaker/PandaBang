@@ -653,6 +653,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="locationButton" destination="A0U-Ne-jXA" id="9Ri-CG-XiS"/>
                         <outlet property="textAge" destination="S4G-7m-zc5" id="M5g-Rw-yBw"/>
                         <outlet property="textName" destination="4tz-iH-Zao" id="Fqw-9d-27g"/>
                         <segue destination="Fjk-nZ-2UR" kind="push" identifier="nextStep" id="7rz-nf-a2t"/>

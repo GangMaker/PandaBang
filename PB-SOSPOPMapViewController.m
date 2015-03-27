@@ -8,6 +8,7 @@
 
 #import "PB-SOSPOPMapViewController.h"
 #import "PB-LocationCell.h"
+#import "locationInfo.h"
 @interface PB_SOSPOPMapViewController ()
 
 @end
@@ -18,7 +19,11 @@
     CLLocationManager  *locationManager;
     NSMutableArray *allLocationName;
     NSMutableArray *allLocationDetail;
+     NSMutableArray *allLocationFind;
     NSInteger cellCount;
+    BOOL seletedCell;
+    NSIndexPath *recordCell;
+    NSInteger recordCellN;
 
 }
 
@@ -26,6 +31,7 @@
     [super viewDidLoad];
     allLocationName=[NSMutableArray array];
     allLocationDetail=[NSMutableArray array];
+    allLocationFind=[NSMutableArray array];
 
     [_mapView setMapType:MKMapTypeStandard];
     _mapView.showsUserLocation=YES;
@@ -37,55 +43,38 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self setLocationManager];
+    recordCell=[NSIndexPath indexPathForRow:0 inSection:0];
+    locationInfo *locInfo=[locationInfo defaultManager];
+   CLLocation *location= [locInfo getLocation];
+    latitude=location.coordinate.latitude;
+    longitude=location.coordinate.longitude;
+    [self findCurrentLocation:nil];
     
 
-}
--(void)setLocationManager{
-    
-    
-    if (![CLLocationManager locationServicesEnabled]) {
-        NSLog(@"定位服务当前可能尚未打开，请设置打开！");
-        return;
-    }
-    if (locationManager==nil) {
-        
-        locationManager=[[CLLocationManager alloc]init];
-        
-        //如果没有授权则请求用户授权
-        [locationManager requestAlwaysAuthorization];
-        [locationManager requestWhenInUseAuthorization];
-        //设置代理
-        locationManager.delegate=self;
-        //设置定位精度
-        locationManager.desiredAccuracy=kCLLocationAccuracyBest;
-        //定位频率,每隔多少米定位一次
-        CLLocationDistance distance=10.0;//十米定位一次
-        locationManager.distanceFilter=distance;
-        //启动跟踪定位
-        [locationManager startUpdatingLocation];
-        
-    }
 }
 
 -(void)issueLocalSearchLookup:(NSString *)searchString region:(MKCoordinateRegion)region
 {
     [allLocationName removeAllObjects];
     [allLocationDetail removeAllObjects];
+    [allLocationFind removeAllObjects];
+    recordCell=[NSIndexPath indexPathForRow:0 inSection:0];
 
     MKLocalSearchRequest *localSearchRequest = [[MKLocalSearchRequest alloc] init];
            localSearchRequest.region = region;
-        localSearchRequest.naturalLanguageQuery = @"hotel";
+        localSearchRequest.naturalLanguageQuery =searchString;
         MKLocalSearch *localSearch = [[MKLocalSearch alloc] initWithRequest:localSearchRequest];
     [localSearch startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
-        NSLog(@"%@",response);
         for (MKMapItem *mapItem in response.mapItems) {
 //tableview信息添加
             [allLocationName addObject:mapItem.name];
             [allLocationDetail addObject:mapItem.placemark.administrativeArea];
-            NSLog(@"%@",mapItem);
+            [allLocationFind addObject:mapItem.placemark.location];
+            
         }
-        cellCount=[allLocationName count];
+        cellCount=[allLocationName count]+1;
+        NSLog(@"%ld",(long)cellCount);
+
         [self.tableView reloadData];
 
     }];
@@ -95,59 +84,22 @@
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
     CLLocationCoordinate2D centerCoordinate = mapView.region.center;
-
-
-   
-    MKCoordinateSpan span = {0.01, 0.01};
+    
+       MKCoordinateSpan span = {0.01, 0.01};
     MKCoordinateRegion region = {centerCoordinate, span};
-    
-   [self issueLocalSearchLookup:nil region:region];
-    
-  //    获取中心点的位置
-    NSLog(@" +++++++regionDidChangeAnimated %f,%f",centerCoordinate.latitude, centerCoordinate.longitude);
-//    在结束改变位置 放下标注 并且搜索位置 和附件的位置
-}
+    if (seletedCell==NO) {
+        [self issueLocalSearchLookup:@"hotel" region:region];
+
+
+    }
+    seletedCell=NO;
+
+ }
 
 -(void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated{
 //在开始改变位置的时候 抬起标注
 }
 
-
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
-    CLLocation *gett;
-    
-    for (CLLocation *get in locations) {
-        
-        latitude= get.coordinate.latitude;
-        longitude=get.coordinate.longitude;
-        gett=get;
-    }
-    CLLocationCoordinate2D centerCoordinate;
-    centerCoordinate.latitude = latitude;
-    centerCoordinate.longitude = longitude;
-    MKCoordinateSpan span;
-    span.latitudeDelta = 0.01;
-    span.longitudeDelta = 0.01;
-    MKCoordinateRegion region;
-    region.center = centerCoordinate;
-    region.span = span;
-    [_mapView setRegion:region animated:YES];
-
-    CLGeocoder *geocoder=[[CLGeocoder alloc]init];
-    
-    [geocoder reverseGeocodeLocation:gett completionHandler:^(NSArray *placemarks, NSError *error) {
-        for (CLPlacemark *placemark in placemarks) {
-//            [self.currentLocation addObject:placemark.administrativeArea];
-//            [self.currentLocation addObject:placemark.subLocality];
-//            [self.currentLocation addObject:placemark.name];
-//            NSLog(@"%@",self.currentLocation);
-            
-            
-        }
-        
-        
-    }];
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -158,13 +110,40 @@ static NSString *indefier=@"cell";
    PB_LocationCell *cell=[tableView dequeueReusableCellWithIdentifier:indefier];
    
     if ([allLocationDetail count]!=0) {
-        cell.locationLabel.text=[allLocationName objectAtIndex:indexPath.row];
-        cell.locationDetalLabel.text=[allLocationDetail objectAtIndex:indexPath.row];
-
+        if (indexPath.row==0) {
+            cell.locationLabel.text=@"位置";
+            cell.locationDetalLabel.text=@"";
+                   }
+        else{
+        cell.locationLabel.text=[allLocationName objectAtIndex:indexPath.row-1];
+        cell.locationDetalLabel.text=[allLocationDetail objectAtIndex:indexPath.row-1];
+          
+            
+        }
         
     }
+    
+    
+    if (indexPath==recordCell) {
+        cell.accessoryType=UITableViewCellAccessoryCheckmark;
+    }
+    else{
+        cell.accessoryType=UITableViewCellAccessoryNone;
+
+    }
+    
        return cell;
 
+
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    PB_LocationCell *lastCell=(PB_LocationCell*)[tableView cellForRowAtIndexPath:recordCell];
+    lastCell.accessoryType=UITableViewCellAccessoryNone;
+    PB_LocationCell *newCell=(PB_LocationCell*)[tableView cellForRowAtIndexPath:indexPath];
+    newCell.accessoryType=UITableViewCellAccessoryCheckmark;
+    
+    [self findPlace:[allLocationFind objectAtIndex:indexPath.row]];
+    recordCell=indexPath;
 
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -183,21 +162,22 @@ static NSString *indefier=@"cell";
     // Pass the selected object to the new view controller.
 }
 */
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+-(void)findPlace:(CLLocation * )location{
+    MKCoordinateSpan span = {0.01, 0.01};
+    MKCoordinateRegion region = {location.coordinate, span};
 
-    NSLog(@"11");
+      [_mapView setRegion:region animated:YES];
+    seletedCell=YES;
+
 
 }
 - (IBAction)findCurrentLocation:(UIButton *)sender {
     CLLocationCoordinate2D centerCoordinate;
     centerCoordinate.latitude = latitude;
     centerCoordinate.longitude = longitude;
-    MKCoordinateSpan span;
-    span.latitudeDelta = 0.01;
-    span.longitudeDelta = 0.01;
-    MKCoordinateRegion region;
-    region.center = centerCoordinate;
-    region.span = span;
+    MKCoordinateSpan span = {0.01, 0.01};
+    MKCoordinateRegion region = {centerCoordinate, span};
+
     [_mapView setRegion:region animated:YES];
     
 
