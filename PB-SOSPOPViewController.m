@@ -9,7 +9,7 @@
 #import "PB-SOSPOPViewController.h"
 #import "PB-SOSPOPSecondViewController.h"
 #import "NSString+Valid.h"
-
+#import "locationInfo.h"
 @interface PB_SOSPOPViewController ()
 
 @end
@@ -30,7 +30,8 @@
 //    每次将要出现  添加键盘hide通知
     [super viewWillAppear:animated];
     [ [UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-
+    locationInfo *locInfo=[locationInfo defaultManager];
+    [self.locationButton setTitle:[locInfo getLocationLabel] forState:UIControlStateNormal];
     [self keyboardAddNSNotification];
 
 

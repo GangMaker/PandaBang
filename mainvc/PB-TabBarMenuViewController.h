@@ -15,7 +15,6 @@
 @interface PB_TabBarMenuViewController : UITabBarController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,CLLocationManagerDelegate,UITextViewDelegate>
 @property(nonatomic,retain)UIImageView *tabView;
 @property(nonatomic,retain)ViewController *parentVC;
-@property(nonatomic,retain)NSMutableArray *currentLocation;
 -(void)changeTabView:(UIButton *)sender;
 
 @end
