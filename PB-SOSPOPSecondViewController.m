@@ -68,9 +68,20 @@
         }
         
     }
+    
+    
+    
 
 }
-//回收键盘
+
+
+
+- (IBAction)backVC:(UIBarButtonItem *)sender {
+    UIActionSheet *action=[[UIActionSheet alloc]initWithTitle:@"是否保存下次使用？" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"保存" otherButtonTitles:@"不保存", nil];
+    [action showInView:self.view];
+    
+}
+
 - (IBAction)nextStep:(UIButton *)sender {
     [self performSegueWithIdentifier:@"nextStep2" sender:nil];
 }
@@ -87,16 +98,36 @@
 //添加图片选择
 - (void)addImage:(UIButton *)sender {
     UIActionSheet *choosePhotoType=[[UIActionSheet alloc]initWithTitle:@"获取情况照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拍照" otherButtonTitles:@"照片库", nil];
+    choosePhotoType.tag=1;
  [choosePhotoType showInView:self.view];
     
 }
+
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (actionSheet.tag==1) {
+        
+    
     if (buttonIndex==0) {
         [self  takePhotopicker];
     }
     else if (buttonIndex==1){
         [self photoFromAlbum];
         
+    }}
+    else{
+        if (buttonIndex==0) {
+            
+        }
+        else if (buttonIndex==1){
+            
+        }
+        
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+
+    
+    
     }
 }
 

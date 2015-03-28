@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
+
 
 @class ViewController;
 
 
-@interface PB_TabBarMenuViewController : UITabBarController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,CLLocationManagerDelegate,UITextViewDelegate>
+@interface PB_TabBarMenuViewController : UITabBarController<UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextViewDelegate>
 @property(nonatomic,retain)UIImageView *tabView;
 @property(nonatomic,retain)ViewController *parentVC;
 -(void)changeTabView:(UIButton *)sender;

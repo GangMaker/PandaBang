@@ -54,26 +54,60 @@
     [reason showInView:self.view];
 
 }
+
+- (IBAction)backVC:(UIBarButtonItem *)sender
+{
+        UIActionSheet *action=[[UIActionSheet alloc]initWithTitle:@"是否保存下次使用？" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"保存" otherButtonTitles:@"不保存", nil];
+    [action showInView:self.view];
+    
+
+}
+
+    
+
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    UIButton *ifPayB=(UIButton *)[self.view viewWithTag:111];
+     UIButton *bloodReaB=(UIButton *)[self.view viewWithTag:222];
     if (actionSheet.tag==1) {
         if (buttonIndex==0) {
+            [ifPayB setTitle:@"给予报销" forState:UIControlStateNormal];
             
         }
         else if (buttonIndex==1){
+            [ifPayB setTitle:@"不给予报销" forState:UIControlStateNormal];
+
         
         }
     }
-    else  {
+    else  if(actionSheet.tag==2){
         if (buttonIndex==0) {
-            
+            [bloodReaB setTitle:@"紧急缺血" forState:UIControlStateNormal];
         }
         else if (buttonIndex==1){
+            [bloodReaB setTitle:@"怀孕备血" forState:UIControlStateNormal];
+
             
         }
 
     
     
     }
+    else{
+        if (buttonIndex==0) {
+            
+        }
+        else if (buttonIndex==1){
+            
+        }
+        
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+        
+}
+    
+    
+    
 
 
 }

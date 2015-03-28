@@ -13,7 +13,6 @@
 #import "PB-NAVSOSPViewController.h"
 #import "UserDB.h"
 #import "UserModal.h"
-#import "locationInfo.h"
 
 
 #define K_GETFROM_STORYBOARD(SBNAME,VCNAME)  [[UIStoryboard storyboardWithName:SBNAME bundle:[NSBundle mainBundle]]     instantiateViewControllerWithIdentifier:VCNAME]
@@ -27,7 +26,7 @@ UIImagePickerController *myPickerController;
     UIImagePickerController *myPickerControllerHead;
    NSMutableArray *currentLocation;
 
-    CLLocationManager *locationManager;
+
     UserDB *userDB;
     //   是否已经登入
     UIView *lightView;
@@ -49,7 +48,6 @@ UIImagePickerController *myPickerController;
    currentLocation=[NSMutableArray array];
 
     self.tabBar.hidden=YES;
-  [self setLocationManager];
 //自定义一个tabbar
    
    
@@ -110,71 +108,6 @@ UIImagePickerController *myPickerController;
 
 #define take PhoteDelegateMethods
 
-#define locationdelegateMetods
--(void)setLocationManager{
-
-    
-    if (![CLLocationManager locationServicesEnabled]) {
-        NSLog(@"定位服务当前可能尚未打开，请设置打开！");
-        return;
-    }
-    if (locationManager==nil) {
-        
-        locationManager=[[CLLocationManager alloc]init];
-        
-    //如果没有授权则请求用户授权
-        [locationManager requestAlwaysAuthorization];
-        [locationManager requestWhenInUseAuthorization];
-           //设置代理
-        locationManager.delegate=self;
-        //设置定位精度
-        locationManager.desiredAccuracy=kCLLocationAccuracyBest;
-        //定位频率,每隔多少米定位一次
-        CLLocationDistance distance=100.0;//十米定位一次
-        locationManager.distanceFilter=distance;
-        //启动跟踪定位
-        [locationManager startUpdatingLocation];
-    
-    }
-}
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
-    CLLocation *gett;
-    locationInfo *locInfo= [locationInfo defaultManager];
-
-    for (CLLocation *get in locations) {
-        
-        gett=get;
-              [locInfo saveLocation:get];
-        
-        
-    }
-    
- 
-    CLGeocoder *geocoder=[[CLGeocoder alloc]init];
-
-         [geocoder reverseGeocodeLocation:gett completionHandler:^(NSArray *placemarks, NSError *error) {
-             for (CLPlacemark *placemark in placemarks) {
-//                 NSLog(@"name:%@",placemark.name);                     //位置名
-//                 NSLog(@"thoroughfare:%@",placemark.thoroughfare);     //街道
-//                 NSLog(@"subThoroughfare:%@",placemark.subThoroughfare); //子街道
-//                 NSLog(@"administrativeArea:%@",placemark.administrativeArea);
-//                 NSLog(@"locality:%@",placemark.locality);               //市
-//                 NSLog(@"subLocality:%@",placemark.subLocality);          //区
-//                 NSLog(@"country:%@",placemark.country);               //国家
-//                 位置的label
-                 
-                 NSString *locationLabel=[NSString stringWithFormat:@"%@ %@ %@",placemark.administrativeArea,placemark.subLocality,placemark.name];
-//                 [currentLocation addObject:placemark.administrativeArea];
-//                 [currentLocation addObject:placemark.subLocality];
-//                 [currentLocation addObject:placemark.name];
-                 [locInfo saveLocationLabel:locationLabel];
-
-                 
-             }
-
-             
-         }];
-}
 -(void)addCell{
    PB_FirstSOSViewController *firstVC=(PB_FirstSOSViewController *) [[[self.viewControllers objectAtIndex:0]childViewControllers]objectAtIndex:0];
     [firstVC  headerrefresh:1];

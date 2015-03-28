@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface PB_SOSPOPViewController : UIViewController<UIActionSheetDelegate,UITextFieldDelegate,UIScrollViewDelegate>
+@interface PB_SOSPOPViewController : UIViewController<UIActionSheetDelegate,UITextFieldDelegate,UIScrollViewDelegate,CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *locationButton;
 @property (weak, nonatomic) IBOutlet UITextField *textName;
@@ -16,11 +17,13 @@
 @property (weak, nonatomic) IBOutlet UITextField *textAge;
 
 - (IBAction)backVC:(UIBarButtonItem *)sender;
+
 - (IBAction)chooseBlood:(UIButton *)sender;
 - (IBAction)chooseLocation:(UIButton *)sender;
 
 
 - (IBAction)nextStepAction:(UIButton *)sender;
+
 
 
 @end

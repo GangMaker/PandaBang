@@ -14,6 +14,8 @@
 
     CLLocation *_location;
     NSString *_locationlabel;
+    CLLocation *_userLocation;
+    NSString *_userlocationLabel;
 
 }
 + (locationInfo *)defaultManager;
@@ -21,4 +23,10 @@
 -(CLLocation *)getLocation;
 -(void)saveLocationLabel:(NSString *)string;
 -(NSString *)getLocationLabel;
+
+-(void)saveUserLocation:(CLLocation *)location;
+-(CLLocation *)getUserLocation;
+-(void)saveUserLocationLabel:(NSString *)string;
+-(NSString *)getUserLocationLabel;
+
 @end

@@ -15,4 +15,6 @@
 - (IBAction)ifPayAction:(UIButton *)sender;
 - (IBAction)bloodReason:(UIButton *)sender;
 
+- (IBAction)backVC:(UIBarButtonItem *)sender;
+
 @end

@@ -27,10 +27,13 @@
     NSString *locationWeizhi;
     CLLocation *gett;
     locationInfo *locInfo;
+    NSString *chooseLocationLabel;
+    CLLocation *chooseLocation;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+//    存放获取周边位置信息的名字 详细地址 和位置
     allLocationName=[NSMutableArray array];
     allLocationDetail=[NSMutableArray array];
     allLocationFind=[NSMutableArray array];
@@ -47,17 +50,31 @@
     [super viewWillAppear:animated];
     recordCell=[NSIndexPath indexPathForRow:0 inSection:0];
     locInfo=[locationInfo defaultManager];
+//    获取当前的位置坐标
     CLLocation *location=[locInfo getLocation];
+    NSLog(@"%@",location);
+    chooseLocation=location;
     longitude=location.coordinate.longitude;
     latitude=location.coordinate.latitude;
+//    获取当前位置的地址
     locationWeizhi=[locInfo getLocationLabel];
-    [self findCurrentLocation:nil];
+    chooseLocationLabel=locationWeizhi;
+//    找到当前位置
+    CLLocationCoordinate2D centerCoordinate;
+    centerCoordinate.latitude = latitude;
+    centerCoordinate.longitude = longitude;
+    MKCoordinateSpan span = {0.01, 0.01};
+    MKCoordinateRegion region = {centerCoordinate, span};
+    
+    [_mapView setRegion:region animated:YES];
+    
     
 
 }
 
 -(void)issueLocalSearchLookup:(NSString *)searchString region:(MKCoordinateRegion)region
 {
+//    每次检索周边信息 清空数组
     [allLocationName removeAllObjects];
     [allLocationDetail removeAllObjects];
     [allLocationFind removeAllObjects];
@@ -75,6 +92,10 @@
             [allLocationFind addObject:mapItem.placemark.location];
             
         }
+        CLLocation *  location =[[CLLocation alloc]initWithLatitude:region.center.latitude longitude:region.center.longitude];
+        chooseLocation=location;
+        chooseLocationLabel=locationWeizhi;
+        NSLog(@"%@",chooseLocationLabel);
         cellCount=[allLocationName count]+1;
         NSLog(@"%ld",(long)cellCount);
        [self.tableView reloadData];
@@ -85,12 +106,13 @@
                  }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-
+//在移动mapview时候调用
+//    找到移动后中心点位置的地址显示在tableview第一行
     
     CLLocationCoordinate2D centerCoordinate = mapView.region.center;
    CLLocation *  location =[[CLLocation alloc]initWithLatitude:centerCoordinate.latitude longitude:centerCoordinate.longitude];
     CLGeocoder *geocoder=[[CLGeocoder alloc]init];
-
+   
     [geocoder reverseGeocodeLocation: location
  completionHandler:^(NSArray *placemarks, NSError *error) {
         for (CLPlacemark *placemark in placemarks) {
@@ -100,16 +122,16 @@
         
         
     }];
-
+    
      MKCoordinateSpan span = {0.01, 0.01};
     MKCoordinateRegion region = {centerCoordinate, span};
     if (seletedCell==NO) {
         [self issueLocalSearchLookup:@"hotel" region:region];
-
+       
 
     }
     seletedCell=NO;
-
+   
  }
 
 -(void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated{
@@ -167,7 +189,9 @@ static NSString *indefier=@"cell";
     newCell.accessoryType=UITableViewCellAccessoryCheckmark;
     
     [self findPlace:[allLocationFind objectAtIndex:indexPath.row-1]];
-    recordCell=indexPath;
+           recordCell=indexPath;
+        chooseLocation=[allLocationFind objectAtIndex:indexPath.row-1];
+        chooseLocationLabel=[allLocationDetail objectAtIndex:indexPath.row-1];;
     }
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -192,16 +216,17 @@ static NSString *indefier=@"cell";
 
       [_mapView setRegion:region animated:YES];
     seletedCell=YES;
+    
+
 
 
 }
 - (IBAction)findCurrentLocation:(UIButton *)sender {
+    locationInfo *loc=[locationInfo defaultManager];
+
     
-    CLLocationCoordinate2D centerCoordinate;
-    centerCoordinate.latitude = latitude;
-    centerCoordinate.longitude = longitude;
-    MKCoordinateSpan span = {0.01, 0.01};
-    MKCoordinateRegion region = {centerCoordinate, span};
+       MKCoordinateSpan span = {0.01, 0.01};
+    MKCoordinateRegion region = {[[loc getUserLocation]coordinate], span};
 
     [_mapView setRegion:region animated:YES];
     
@@ -209,8 +234,21 @@ static NSString *indefier=@"cell";
 }
 
 - (IBAction)completeButton:(UIButton *)sender {
-    
+   
     [self.navigationController popViewControllerAnimated:YES];
+    
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+    locInfo=[locationInfo defaultManager];
+    [locInfo saveLocationLabel:chooseLocationLabel];
+    [locInfo saveLocation:chooseLocation];
+    
+    
+    
+    
+
 }
 
 @end

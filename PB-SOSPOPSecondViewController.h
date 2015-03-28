@@ -10,6 +10,8 @@
 #import "MBProgressHUD.h"
 @interface PB_SOSPOPSecondViewController : UIViewController<UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,MBProgressHUDDelegate,UIAlertViewDelegate>
 
+- (IBAction)backVC:(UIBarButtonItem *)sender;
+
 
 
 - (IBAction)nextStep:(UIButton *)sender;

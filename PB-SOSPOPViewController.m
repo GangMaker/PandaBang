@@ -17,11 +17,14 @@
 @implementation PB_SOSPOPViewController
 {
     BOOL informationComplete;
+        CLLocationManager *locationManager;
 
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initAllControl];
+    [self setLocationManager];
+
     
 
     // Do any additional setup after loading the view.
@@ -36,6 +39,75 @@
 
 
 }
+#define locationdelegateMetods
+-(void)setLocationManager{
+    
+    
+    if (![CLLocationManager locationServicesEnabled]) {
+        NSLog(@"定位服务当前可能尚未打开，请设置打开！");
+        return;
+    }
+    if (locationManager==nil) {
+        
+        locationManager=[[CLLocationManager alloc]init];
+        
+        //如果没有授权则请求用户授权
+        [locationManager requestAlwaysAuthorization];
+        [locationManager requestWhenInUseAuthorization];
+        //设置代理
+        locationManager.delegate=self;
+        //设置定位精度
+        locationManager.desiredAccuracy=kCLLocationAccuracyBest;
+        //定位频率,每隔多少米定位一次
+        CLLocationDistance distance=100.0;//十米定位一次
+        locationManager.distanceFilter=distance;
+        //启动跟踪定位
+        [locationManager startUpdatingLocation];
+        
+    }
+}
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    CLLocation *gett;
+    locationInfo *locInfo= [locationInfo defaultManager];
+    
+    for (CLLocation *get in locations) {
+        
+        gett=get;
+        [locInfo saveLocation:get];
+        [locInfo saveUserLocation:get];
+        
+        
+    }
+    
+    
+    CLGeocoder *geocoder=[[CLGeocoder alloc]init];
+    
+    [geocoder reverseGeocodeLocation:gett completionHandler:^(NSArray *placemarks, NSError *error) {
+        for (CLPlacemark *placemark in placemarks) {
+            //                 NSLog(@"name:%@",placemark.name);                     //位置名
+            //                 NSLog(@"thoroughfare:%@",placemark.thoroughfare);     //街道
+            //                 NSLog(@"subThoroughfare:%@",placemark.subThoroughfare); //子街道
+            //                 NSLog(@"administrativeArea:%@",placemark.administrativeArea);
+            //                 NSLog(@"locality:%@",placemark.locality);               //市
+            //                 NSLog(@"subLocality:%@",placemark.subLocality);          //区
+            //                 NSLog(@"country:%@",placemark.country);               //国家
+            //                 位置的label
+            
+            NSString *locationLabel=[NSString stringWithFormat:@"%@ %@ %@",placemark.administrativeArea,placemark.subLocality,placemark.name];
+            //                 [currentLocation addObject:placemark.administrativeArea];
+            //                 [currentLocation addObject:placemark.subLocality];
+            //                 [currentLocation addObject:placemark.name];
+            [locInfo saveLocationLabel:locationLabel];
+            [locInfo saveUserLocationLabel:locationLabel];
+            
+            
+        }
+        
+        
+    }];
+    [locationManager stopUpdatingLocation];
+}
+
 //回收键盘的方法
 -(void)recoverKeyBoard{
 
@@ -69,16 +141,21 @@
     sender.layer.masksToBounds=YES;
 }
 //返回vc
-- (IBAction)backVC:(UIBarButtonItem *)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-    }];
+
+
+-(IBAction)backVC:(UIBarButtonItem *)sender {
+    NSLog(@"1");
+    
+    UIActionSheet *action=[[UIActionSheet alloc]initWithTitle:@"是否保存下次使用？" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"保存" otherButtonTitles:@"不保存", nil];
+    [action showInView:self.view];
+    
     
     
 }
 
 - (IBAction)chooseBlood:(UIButton *)sender {
     UIActionSheet *bloodType=[[UIActionSheet alloc]initWithTitle:@"选择RH阴性血型" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"A型血" otherButtonTitles:@"B型血" ,@"AB型血", @"O型血",nil];
+    bloodType.tag=1;
     [bloodType showInView:self.view];
     
     
@@ -97,16 +174,42 @@
     
 }
 -(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex==0) {
+    UILabel *label=(UILabel *)[self.view viewWithTag:111];
+    if (actionSheet.tag==1) {
         
+    
+    if (buttonIndex==0) {
+        [label setText:@"RH阴性A型血"];
     }
     else if (buttonIndex==1){
+        [label setText:@"RH阴性B型血"];
+
     }
     else if (buttonIndex==2){
+        [label setText:@"RH阴性AB型血"];
+
     }
     else if (buttonIndex==3){
-    }
+        [label setText:@"RH阴性O型血"];
 
+    }
+    }
+    else{
+    
+        if (buttonIndex==0) {
+            
+        }
+        else if (buttonIndex==1){
+            
+        }
+        
+        [self dismissViewControllerAnimated:YES completion:^{
+            
+        }];
+
+    
+    
+    }
 
 
 

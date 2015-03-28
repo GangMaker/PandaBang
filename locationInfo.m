@@ -38,5 +38,23 @@
 
     return _locationlabel;}
 
+-(void)saveUserLocation:(CLLocation *)location{
+
+    _userLocation=location;
+
+
+}
+-(CLLocation *)getUserLocation{
+    return _userLocation;
+
+
+}
+-(void)saveUserLocationLabel:(NSString *)string{
+    _userlocationLabel=string;
+}
+-(NSString *)getUserLocationLabel{
+    return _userlocationLabel;
+
+}
 
 @end
