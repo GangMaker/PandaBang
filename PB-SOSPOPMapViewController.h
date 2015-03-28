@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 - (IBAction)findCurrentLocation:(UIButton *)sender;
+- (IBAction)completeButton:(UIButton *)sender;
 
 @end

@@ -32,7 +32,6 @@
 		17CAF1731ABE99C300BDD8F9 /* PB-TabBarMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CAF0DE1ABE99C300BDD8F9 /* PB-TabBarMenuViewController.m */; };
 		17CAF1741ABE99C300BDD8F9 /* PB-POPupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CAF0E11ABE99C300BDD8F9 /* PB-POPupView.m */; };
 		17CAF1751ABE99C300BDD8F9 /* PB-SCREENView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CAF0E31ABE99C300BDD8F9 /* PB-SCREENView.m */; };
-		17CAF1761ABE99C300BDD8F9 /* PB-SOSpopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CAF0E51ABE99C300BDD8F9 /* PB-SOSpopView.m */; };
 		17CAF1771ABE99C300BDD8F9 /* PB-TabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 17CAF0E71ABE99C300BDD8F9 /* PB-TabView.m */; };
 		17CAF1781ABE99C300BDD8F9 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17CAF0E91ABE99C300BDD8F9 /* 1.jpg */; };
 		17CAF1791ABE99C300BDD8F9 /* 11.png in Resources */ = {isa = PBXBuildFile; fileRef = 17CAF0EA1ABE99C300BDD8F9 /* 11.png */; };
@@ -202,8 +201,6 @@
 		17CAF0E11ABE99C300BDD8F9 /* PB-POPupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PB-POPupView.m"; sourceTree = "<group>"; };
 		17CAF0E21ABE99C300BDD8F9 /* PB-SCREENView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PB-SCREENView.h"; sourceTree = "<group>"; };
 		17CAF0E31ABE99C300BDD8F9 /* PB-SCREENView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PB-SCREENView.m"; sourceTree = "<group>"; };
-		17CAF0E41ABE99C300BDD8F9 /* PB-SOSpopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PB-SOSpopView.h"; sourceTree = "<group>"; };
-		17CAF0E51ABE99C300BDD8F9 /* PB-SOSpopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PB-SOSpopView.m"; sourceTree = "<group>"; };
 		17CAF0E61ABE99C300BDD8F9 /* PB-TabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PB-TabView.h"; sourceTree = "<group>"; };
 		17CAF0E71ABE99C300BDD8F9 /* PB-TabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PB-TabView.m"; sourceTree = "<group>"; };
 		17CAF0E91ABE99C300BDD8F9 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
@@ -555,8 +552,6 @@
 				17B226511AC265060063F6D0 /* PB-SOSPOPMapViewController.m */,
 				17CAF0E21ABE99C300BDD8F9 /* PB-SCREENView.h */,
 				17CAF0E31ABE99C300BDD8F9 /* PB-SCREENView.m */,
-				17CAF0E41ABE99C300BDD8F9 /* PB-SOSpopView.h */,
-				17CAF0E51ABE99C300BDD8F9 /* PB-SOSpopView.m */,
 				17CAF0E61ABE99C300BDD8F9 /* PB-TabView.h */,
 				17CAF0E71ABE99C300BDD8F9 /* PB-TabView.m */,
 			);
@@ -1211,7 +1206,6 @@
 				17CAF1741ABE99C300BDD8F9 /* PB-POPupView.m in Sources */,
 				17CAF1C11ABE99C300BDD8F9 /* PB-ThirdGroupViewController.m in Sources */,
 				17CAF1AF1ABE99C300BDD8F9 /* SDWebImagePrefetcher.m in Sources */,
-				17CAF1761ABE99C300BDD8F9 /* PB-SOSpopView.m in Sources */,
 				17CAF1AD1ABE99C300BDD8F9 /* SDWebImageDownloaderOperation.m in Sources */,
 				17CAF1B41ABE99C300BDD8F9 /* UIImageView+HighlightedWebCache.m in Sources */,
 				17B2265B1AC4B6B30063F6D0 /* locationInfo.m in Sources */,

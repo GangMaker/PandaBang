@@ -24,7 +24,9 @@
     BOOL seletedCell;
     NSIndexPath *recordCell;
     NSInteger recordCellN;
-
+    NSString *locationWeizhi;
+    CLLocation *gett;
+    locationInfo *locInfo;
 }
 
 - (void)viewDidLoad {
@@ -44,10 +46,11 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     recordCell=[NSIndexPath indexPathForRow:0 inSection:0];
-    locationInfo *locInfo=[locationInfo defaultManager];
-   CLLocation *location= [locInfo getLocation];
-    latitude=location.coordinate.latitude;
+    locInfo=[locationInfo defaultManager];
+    CLLocation *location=[locInfo getLocation];
     longitude=location.coordinate.longitude;
+    latitude=location.coordinate.latitude;
+    locationWeizhi=[locInfo getLocationLabel];
     [self findCurrentLocation:nil];
     
 
@@ -74,8 +77,7 @@
         }
         cellCount=[allLocationName count]+1;
         NSLog(@"%ld",(long)cellCount);
-
-        [self.tableView reloadData];
+       [self.tableView reloadData];
 
     }];
     
@@ -83,9 +85,23 @@
                  }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-    CLLocationCoordinate2D centerCoordinate = mapView.region.center;
+
     
-       MKCoordinateSpan span = {0.01, 0.01};
+    CLLocationCoordinate2D centerCoordinate = mapView.region.center;
+   CLLocation *  location =[[CLLocation alloc]initWithLatitude:centerCoordinate.latitude longitude:centerCoordinate.longitude];
+    CLGeocoder *geocoder=[[CLGeocoder alloc]init];
+
+    [geocoder reverseGeocodeLocation: location
+ completionHandler:^(NSArray *placemarks, NSError *error) {
+        for (CLPlacemark *placemark in placemarks) {
+            locationWeizhi=[NSString stringWithFormat:@"%@ %@ %@",placemark.administrativeArea,placemark.subLocality,placemark.name];
+            
+        }
+        
+        
+    }];
+
+     MKCoordinateSpan span = {0.01, 0.01};
     MKCoordinateRegion region = {centerCoordinate, span};
     if (seletedCell==NO) {
         [self issueLocalSearchLookup:@"hotel" region:region];
@@ -105,6 +121,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 60;
+
+}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 static NSString *indefier=@"cell";
    PB_LocationCell *cell=[tableView dequeueReusableCellWithIdentifier:indefier];
@@ -112,14 +132,15 @@ static NSString *indefier=@"cell";
     if ([allLocationDetail count]!=0) {
         if (indexPath.row==0) {
             cell.locationLabel.text=@"位置";
-            cell.locationDetalLabel.text=@"";
+            cell.locationDetalLabel.text=locationWeizhi;
                    }
         else{
         cell.locationLabel.text=[allLocationName objectAtIndex:indexPath.row-1];
         cell.locationDetalLabel.text=[allLocationDetail objectAtIndex:indexPath.row-1];
-          
-            
-        }
+                   }
+        
+        
+
         
     }
     
@@ -137,14 +158,17 @@ static NSString *indefier=@"cell";
 
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row!=0) {
+        
+    
     PB_LocationCell *lastCell=(PB_LocationCell*)[tableView cellForRowAtIndexPath:recordCell];
     lastCell.accessoryType=UITableViewCellAccessoryNone;
     PB_LocationCell *newCell=(PB_LocationCell*)[tableView cellForRowAtIndexPath:indexPath];
     newCell.accessoryType=UITableViewCellAccessoryCheckmark;
     
-    [self findPlace:[allLocationFind objectAtIndex:indexPath.row]];
+    [self findPlace:[allLocationFind objectAtIndex:indexPath.row-1]];
     recordCell=indexPath;
-
+    }
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -162,9 +186,9 @@ static NSString *indefier=@"cell";
     // Pass the selected object to the new view controller.
 }
 */
--(void)findPlace:(CLLocation * )location{
+-(void)findPlace:(CLLocation * )locatio{
     MKCoordinateSpan span = {0.01, 0.01};
-    MKCoordinateRegion region = {location.coordinate, span};
+    MKCoordinateRegion region = {locatio.coordinate, span};
 
       [_mapView setRegion:region animated:YES];
     seletedCell=YES;
@@ -172,6 +196,7 @@ static NSString *indefier=@"cell";
 
 }
 - (IBAction)findCurrentLocation:(UIButton *)sender {
+    
     CLLocationCoordinate2D centerCoordinate;
     centerCoordinate.latitude = latitude;
     centerCoordinate.longitude = longitude;
@@ -182,4 +207,10 @@ static NSString *indefier=@"cell";
     
 
 }
+
+- (IBAction)completeButton:(UIButton *)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 @end

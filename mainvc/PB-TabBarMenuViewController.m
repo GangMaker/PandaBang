@@ -49,7 +49,7 @@ UIImagePickerController *myPickerController;
    currentLocation=[NSMutableArray array];
 
     self.tabBar.hidden=YES;
-    [self setLocationManager];
+  [self setLocationManager];
 //自定义一个tabbar
    
    
@@ -130,7 +130,7 @@ UIImagePickerController *myPickerController;
         //设置定位精度
         locationManager.desiredAccuracy=kCLLocationAccuracyBest;
         //定位频率,每隔多少米定位一次
-        CLLocationDistance distance=10.0;//十米定位一次
+        CLLocationDistance distance=100.0;//十米定位一次
         locationManager.distanceFilter=distance;
         //启动跟踪定位
         [locationManager startUpdatingLocation];
@@ -144,7 +144,7 @@ UIImagePickerController *myPickerController;
     for (CLLocation *get in locations) {
         
         gett=get;
-        [locInfo saveLocation:get];
+              [locInfo saveLocation:get];
         
         
     }
