@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
 @interface PB_SOSPOPSecondViewController : UIViewController<UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,MBProgressHUDDelegate,UIAlertViewDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *telepN1;
+@property (weak, nonatomic) IBOutlet UITextField *telepN2;
+@property (weak, nonatomic) IBOutlet UITextField *bloodVolume;
 
 - (IBAction)backVC:(UIBarButtonItem *)sender;
 
@@ -19,6 +22,6 @@
 - (IBAction)recoverKeyboard:(UIControl *)sender;
 
 - (IBAction)popVC:(UIButton *)sender;
-- (IBAction)nextStep2:(UIButton *)sender;
+
 
 @end

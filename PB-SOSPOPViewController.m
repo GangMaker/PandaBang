@@ -10,6 +10,7 @@
 #import "PB-SOSPOPSecondViewController.h"
 #import "NSString+Valid.h"
 #import "locationInfo.h"
+#import "PostInfo.h"
 @interface PB_SOSPOPViewController ()
 
 @end
@@ -18,13 +19,20 @@
 {
     BOOL informationComplete;
         CLLocationManager *locationManager;
+    PostInfo *postInfo;
+    locationInfo *locInfo;
 
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initAllControl];
     [self setLocationManager];
-
+    postInfo=[PostInfo defaultManager];
+    self.textName.text=postInfo.Post_name;
+    self.textAge.text=postInfo.Post_age;
+    UILabel *blood=(UILabel *)[self.view viewWithTag:111];
+    blood.text=postInfo.Post_bloodType;
+    
     
 
     // Do any additional setup after loading the view.
@@ -33,8 +41,10 @@
 //    每次将要出现  添加键盘hide通知
     [super viewWillAppear:animated];
     [ [UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
-    locationInfo *locInfo=[locationInfo defaultManager];
+    locInfo=[locationInfo defaultManager];
     [self.locationButton setTitle:[locInfo getLocationLabel] forState:UIControlStateNormal];
+    
+    
     [self keyboardAddNSNotification];
 
 
@@ -68,7 +78,7 @@
 }
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     CLLocation *gett;
-    locationInfo *locInfo= [locationInfo defaultManager];
+    locInfo= [locationInfo defaultManager];
     
     for (CLLocation *get in locations) {
         
@@ -237,6 +247,9 @@
     }
         // 如果没有error 推送下一页面
     if ([errors isEqualToString:@""]) {
+        postInfo=[PostInfo defaultManager];
+
+      
         [self performSegueWithIdentifier:@"nextStep" sender:nil];
         
 
@@ -250,6 +263,9 @@
     
     }
     
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    postInfo.Post_name=textField.text;
 }
 
 /*

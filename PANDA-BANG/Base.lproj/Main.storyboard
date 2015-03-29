@@ -663,6 +663,9 @@
                                 <rect key="frame" x="118" y="174" width="221" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="1ed-Ch-kUL" id="0uU-Lh-k0P"/>
+                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JK1-Lr-hgs">
                                 <rect key="frame" x="285" y="310" width="0.5" height="49"/>
@@ -1216,9 +1219,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="nextStep2:" destination="Fjk-nZ-2UR" eventType="touchUpInside" id="Tbd-a8-wnK"/>
                                     <action selector="nextStep:" destination="Fjk-nZ-2UR" eventType="touchUpInside" id="0Ez-ug-iv6"/>
-                                    <action selector="nextStepAction:" destination="1ed-Ch-kUL" eventType="touchUpInside" id="0Xx-KG-F0w"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N6B-5H-x2Y">
@@ -1303,6 +1304,9 @@
                     <navigationItem key="navigationItem" title="求助条2/3" id="rwQ-9b-iHz"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="bloodVolume" destination="h9J-sk-ZbR" id="Ab9-JU-Zdx"/>
+                        <outlet property="telepN1" destination="Qep-rw-PLO" id="YPe-px-YiV"/>
+                        <outlet property="telepN2" destination="NF7-Gk-NzQ" id="P9e-uR-p99"/>
                         <segue destination="pdx-SD-hRy" kind="push" identifier="nextStep2" id="f90-VU-JEm"/>
                     </connections>
                 </viewController>
@@ -1331,7 +1335,6 @@
                                 </state>
                                 <connections>
                                     <action selector="completeAction:" destination="pdx-SD-hRy" eventType="touchUpInside" id="4VQ-am-Bba"/>
-                                    <action selector="nextStepAction:" destination="1ed-Ch-kUL" eventType="touchUpInside" id="ATR-bS-18s"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nuO-Eq-fDL">

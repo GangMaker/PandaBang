@@ -10,6 +10,8 @@
 #import "MBProgressHUD.h"
 #import <unistd.h>
 #import "NSString+Valid.h"
+#import "PostInfo.h"
+
 @interface PB_SOSPOPSecondViewController ()
 
 @end
@@ -21,6 +23,7 @@
     CGPoint lastPoint;
     CGPoint recordMove;
     MBProgressHUD *HUD;
+    PostInfo *postInfo;
 }
 
 - (void)viewDidLoad {
@@ -83,6 +86,8 @@
 }
 
 - (IBAction)nextStep:(UIButton *)sender {
+    postInfo=[PostInfo defaultManager];
+    [postInfo saveInfoSTelephoneN:self.telepN1.text  Telep2:self.telepN2.text BloodVolume:self.bloodVolume.text ImageArray:imageCollection];
     [self performSegueWithIdentifier:@"nextStep2" sender:nil];
 }
 
@@ -93,8 +98,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)nextStep2:(UIButton *)sender {
-}
+
 //添加图片选择
 - (void)addImage:(UIButton *)sender {
     UIActionSheet *choosePhotoType=[[UIActionSheet alloc]initWithTitle:@"获取情况照片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拍照" otherButtonTitles:@"照片库", nil];

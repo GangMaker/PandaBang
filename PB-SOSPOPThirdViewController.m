@@ -7,13 +7,16 @@
 //
 
 #import "PB-SOSPOPThirdViewController.h"
+#import "PostInfo.h"
 
 @interface PB_SOSPOPThirdViewController ()
 
 @end
 
 @implementation PB_SOSPOPThirdViewController
-
+{
+    PostInfo *postInfo;
+    }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -40,6 +43,12 @@
 }
 
 - (IBAction)completeAction:(UIButton *)sender {
+    postInfo=[PostInfo defaultManager];
+    UIButton *ifPayB=(UIButton *)[self.view viewWithTag:111];
+    UIButton *bloodReaB=(UIButton *)[self.view viewWithTag:222];
+    [postInfo saveInfoTDetail:self.textView.text LabelPay:ifPayB.titleLabel.text LabelReason:bloodReaB.titleLabel.text];
+    
+
     
 }
 - (IBAction)ifPayAction:(UIButton *)sender {
