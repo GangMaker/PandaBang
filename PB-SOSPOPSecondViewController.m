@@ -87,7 +87,7 @@
 
 - (IBAction)nextStep:(UIButton *)sender {
     postInfo=[PostInfo defaultManager];
-    [postInfo saveInfoSTelephoneN:self.telepN1.text  Telep2:self.telepN2.text BloodVolume:self.bloodVolume.text ImageArray:imageCollection];
+//    [postInfo saveInfoSTelephoneN:self.telepN1.text  Telep2:self.telepN2.text BloodVolume:self.bloodVolume.text ImageArray:imageCollection];
     [self performSegueWithIdentifier:@"nextStep2" sender:nil];
 }
 

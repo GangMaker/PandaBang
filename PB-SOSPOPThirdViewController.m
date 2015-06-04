@@ -46,7 +46,7 @@
     postInfo=[PostInfo defaultManager];
     UIButton *ifPayB=(UIButton *)[self.view viewWithTag:111];
     UIButton *bloodReaB=(UIButton *)[self.view viewWithTag:222];
-    [postInfo saveInfoTDetail:self.textView.text LabelPay:ifPayB.titleLabel.text LabelReason:bloodReaB.titleLabel.text];
+   // [postInfo saveInfoTDetail:self.textView.text LabelPay:ifPayB.titleLabel.text LabelReason:bloodReaB.titleLabel.text];
     
 
     
